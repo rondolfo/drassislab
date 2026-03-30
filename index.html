@@ -57,6 +57,10 @@
     .stat{padding:1.5rem 1rem;text-align:center;border-right:1px solid var(--border)}.stat:last-child{border-right:none}
     .stat-n{display:block;font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--green);line-height:1;margin-bottom:4px}
     .stat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+    /* RESEARCH SECTION WITH LOGO WATERMARK */
+    .research-section{position:relative;overflow:hidden}
+    .research-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:480px;height:480px;background:url('img/lablogo.jpeg') center/contain no-repeat;opacity:0.04;pointer-events:none;z-index:0}
+    .research-section .sh,.research-section .rg{position:relative;z-index:1}
     /* RESEARCH CARDS */
     .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .rc{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:1.5rem;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden}
@@ -87,7 +91,8 @@
     .at{font-size:15px;line-height:1.85;color:var(--muted);margin-bottom:1rem}
     .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
     .tag{background:var(--gl);color:var(--green);font-size:12px;padding:4px 12px;border-radius:20px;font-weight:500}
-    .edu-card{background:var(--gl);border-radius:16px;padding:1.5rem}
+    .edu-card{background:var(--gl);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden}
+    .edu-card::after{content:'';position:absolute;bottom:-20px;right:-20px;width:120px;height:120px;background:url('img/lablogo.jpeg') center/contain no-repeat;opacity:0.08;pointer-events:none}
     .edu-ttl{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:500;margin-bottom:1rem}
     .edu-i{padding:8px 0;border-bottom:1px solid rgba(26,107,60,.15)}.edu-i:last-child{border-bottom:none}
     .edu-deg{font-size:13px;font-weight:500;color:var(--text)}.edu-pl{font-size:12px;color:var(--muted)}
@@ -118,7 +123,7 @@
     .slinks{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.5rem}
     .sbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--muted);transition:all .2s;font-weight:500}
     .sbtn:hover{border-color:var(--green);color:var(--green);background:var(--gl)}
-    .gfw{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2)}
+    .gfw{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2);max-height:480px}
     .gfw iframe{width:100%;border:none;display:block}
     .gfp{padding:2rem;text-align:center}
     .gfp p{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.7}
@@ -137,7 +142,7 @@
 <body>
 
 <nav>
-  <span class="nav-logo" onclick="go('home')"><img src="assislab-logo.png" alt="Assis Lab" style="height:44px;width:44px;object-fit:contain;border-radius:8px;display:block;"/></span>
+  <span class="nav-logo" onclick="go('home')"><img src="img/lablogo.jpeg" alt="Assis Lab" style="height:48px;width:48px;object-fit:contain;border-radius:10px;display:block;"/></span>
   <ul class="nav-links" id="nl">
     <li><a onclick="go('about')" data-pg="about" data-i="nav_about">About</a></li>
     <li><a onclick="go('publications','all')" data-pg="publications" data-i="nav_pub">Publications</a></li>
@@ -175,7 +180,7 @@
     </div>
     <div class="hero-vis">
       <div class="hblob b1"></div><div class="hblob b2"></div>
-      <div class="hero-photo"><img src="vania.jpeg" alt="Dr. Vania Assis"/></div>
+      <div class="hero-photo"><img src="img/Vania.jpeg" alt="Dr. Vania Assis"/></div>
     </div>
   </div>
 
@@ -186,7 +191,7 @@
     <div class="stat"><span class="stat-n">4</span><span class="stat-l" data-i="stat_inst">Institutions</span></div>
   </div>
 
-  <div class="section">
+  <div class="section research-section">
     <div class="sh"><h2 data-i="r_title">Research Areas</h2><div class="sh-line"></div></div>
     <div class="rg">
       <div class="rc" onclick="go('publications','ecoimmunology')"><span class="ri">🐸</span><p class="rn" data-i="r1n">Amphibian Ecoimmunology</p><p class="rd" data-i="r1d">How stress hormones modulate immune function in anurans under natural and experimental conditions.</p><span class="rcnt">5 publications</span></div>
@@ -234,7 +239,7 @@
       </div>
       <div>
         <p class="cttl" data-i="c_msg">Send a message</p>
-        <div class="gfw"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0CqQHv3V4KfQGRLztHVv7eWUEA_juWh_NjWjWlWYNoaC_VQ/viewform?embedded=true" width="100%" height="778" frameborder="0" marginheight="0" marginwidth="0" style="display:block;min-height:778px">Carregando…</iframe></div>
+        <div class="gfw"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0CqQHv3V4KfQGRLztHVv7eWUEA_juWh_NjWjWlWYNoaC_VQ/viewform?embedded=true" width="100%" height="480" frameborder="0" marginheight="0" marginwidth="0" style="display:block;">Carregando…</iframe></div>
       </div>
     </div>
   </div>
@@ -323,7 +328,7 @@
 </div>
 
 <footer>
-  <span class="fb"><img src="assislab-logo.png" alt="Assis Lab" style="height:36px;width:36px;object-fit:contain;border-radius:6px;margin-right:8px;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.9);"/>drassislab.com</span>
+  <span class="fb"><img src="img/lablogo.jpeg" alt="Assis Lab" style="height:36px;width:36px;object-fit:contain;border-radius:6px;margin-right:8px;vertical-align:middle;opacity:0.85;"/>drassislab.com</span>
   <ul class="fl">
     <li><a onclick="go('about')" data-i="nav_about">About</a></li>
     <li><a onclick="go('publications','all')" data-i="nav_pub">Publications</a></li>
