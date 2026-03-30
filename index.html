@@ -26,8 +26,9 @@
     .nav-links a:hover{color:var(--green)}
     .nav-right{display:flex;align-items:center;gap:12px}
     .flags{display:flex;gap:6px;align-items:center}
-    .flag-btn{background:none;border:1.5px solid transparent;border-radius:6px;cursor:pointer;font-size:18px;padding:2px 4px;transition:border-color .2s;line-height:1}
-    .flag-btn.active{border-color:var(--green)}
+    .flag-btn{background:none;border:1.5px solid transparent;border-radius:5px;cursor:pointer;padding:2px;transition:border-color .2s,box-shadow .2s;line-height:0;overflow:hidden}
+    .flag-btn svg{display:block;width:28px;height:20px;border-radius:3px}
+    .flag-btn.active{border-color:var(--green);box-shadow:0 0 0 2px var(--green-light)}
     .flag-btn:hover{border-color:var(--green-mid)}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
     .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px}
@@ -178,9 +179,63 @@
   </ul>
   <div class="nav-right">
     <div class="flags">
-      <button class="flag-btn active" onclick="setLang('en')" title="English">🇺🇸</button>
-      <button class="flag-btn" onclick="setLang('pt')" title="Português">🇧🇷</button>
-      <button class="flag-btn" onclick="setLang('es')" title="Español">🇪🇸</button>
+      <!-- USA -->
+      <button class="flag-btn active" onclick="setLang('en')" title="English">
+        <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="20" fill="#B22234"/>
+          <rect y="1.54" width="28" height="1.54" fill="#fff"/>
+          <rect y="3.08" width="28" height="1.54" fill="#B22234"/>
+          <rect y="4.62" width="28" height="1.54" fill="#fff"/>
+          <rect y="6.15" width="28" height="1.54" fill="#B22234"/>
+          <rect y="7.69" width="28" height="1.54" fill="#fff"/>
+          <rect y="9.23" width="28" height="1.54" fill="#B22234"/>
+          <rect y="10.77" width="28" height="1.54" fill="#fff"/>
+          <rect y="12.31" width="28" height="1.54" fill="#B22234"/>
+          <rect y="13.85" width="28" height="1.54" fill="#fff"/>
+          <rect y="15.38" width="28" height="1.54" fill="#B22234"/>
+          <rect y="16.92" width="28" height="1.54" fill="#fff"/>
+          <rect width="11.2" height="10.77" fill="#3C3B6E"/>
+          <!-- stars simplified as small dots -->
+          <g fill="#fff" font-size="2">
+            <circle cx="1.4" cy="1.1" r="0.7"/><circle cx="2.8" cy="1.1" r="0.7"/><circle cx="4.2" cy="1.1" r="0.7"/><circle cx="5.6" cy="1.1" r="0.7"/><circle cx="7" cy="1.1" r="0.7"/><circle cx="8.4" cy="1.1" r="0.7"/>
+            <circle cx="2.1" cy="2.2" r="0.7"/><circle cx="3.5" cy="2.2" r="0.7"/><circle cx="4.9" cy="2.2" r="0.7"/><circle cx="6.3" cy="2.2" r="0.7"/><circle cx="7.7" cy="2.2" r="0.7"/>
+            <circle cx="1.4" cy="3.3" r="0.7"/><circle cx="2.8" cy="3.3" r="0.7"/><circle cx="4.2" cy="3.3" r="0.7"/><circle cx="5.6" cy="3.3" r="0.7"/><circle cx="7" cy="3.3" r="0.7"/><circle cx="8.4" cy="3.3" r="0.7"/>
+            <circle cx="2.1" cy="4.4" r="0.7"/><circle cx="3.5" cy="4.4" r="0.7"/><circle cx="4.9" cy="4.4" r="0.7"/><circle cx="6.3" cy="4.4" r="0.7"/><circle cx="7.7" cy="4.4" r="0.7"/>
+            <circle cx="1.4" cy="5.5" r="0.7"/><circle cx="2.8" cy="5.5" r="0.7"/><circle cx="4.2" cy="5.5" r="0.7"/><circle cx="5.6" cy="5.5" r="0.7"/><circle cx="7" cy="5.5" r="0.7"/><circle cx="8.4" cy="5.5" r="0.7"/>
+            <circle cx="2.1" cy="6.6" r="0.7"/><circle cx="3.5" cy="6.6" r="0.7"/><circle cx="4.9" cy="6.6" r="0.7"/><circle cx="6.3" cy="6.6" r="0.7"/><circle cx="7.7" cy="6.6" r="0.7"/>
+            <circle cx="1.4" cy="7.7" r="0.7"/><circle cx="2.8" cy="7.7" r="0.7"/><circle cx="4.2" cy="7.7" r="0.7"/><circle cx="5.6" cy="7.7" r="0.7"/><circle cx="7" cy="7.7" r="0.7"/><circle cx="8.4" cy="7.7" r="0.7"/>
+            <circle cx="2.1" cy="8.8" r="0.7"/><circle cx="3.5" cy="8.8" r="0.7"/><circle cx="4.9" cy="8.8" r="0.7"/><circle cx="6.3" cy="8.8" r="0.7"/><circle cx="7.7" cy="8.8" r="0.7"/>
+            <circle cx="1.4" cy="9.9" r="0.7"/><circle cx="2.8" cy="9.9" r="0.7"/><circle cx="4.2" cy="9.9" r="0.7"/><circle cx="5.6" cy="9.9" r="0.7"/><circle cx="7" cy="9.9" r="0.7"/><circle cx="8.4" cy="9.9" r="0.7"/>
+          </g>
+        </svg>
+      </button>
+      <!-- Brazil -->
+      <button class="flag-btn" onclick="setLang('pt')" title="Português">
+        <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="20" fill="#009C3B"/>
+          <polygon points="14,2 26,10 14,18 2,10" fill="#FFDF00"/>
+          <circle cx="14" cy="10" r="4.2" fill="#002776"/>
+          <path d="M10.2,8.5 Q14,7 17.8,8.5" stroke="#fff" stroke-width="0.7" fill="none"/>
+          <text x="14" y="11.5" text-anchor="middle" fill="#fff" font-size="2.2" font-family="sans-serif" font-weight="bold" letter-spacing="0.3">BRASIL</text>
+        </svg>
+      </button>
+      <!-- Spain -->
+      <button class="flag-btn" onclick="setLang('es')" title="Español">
+        <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="20" fill="#AA151B"/>
+          <rect y="5" width="28" height="10" fill="#F1BF00"/>
+          <!-- coat of arms simplified -->
+          <rect x="10" y="6.5" width="3.5" height="7" fill="#AA151B" rx="0.5"/>
+          <rect x="10" y="6.5" width="3.5" height="7" fill="none" stroke="#8B0000" stroke-width="0.3"/>
+          <rect x="10" y="6.5" width="3.5" height="3" fill="#0039A6"/>
+          <rect x="10" y="9.5" width="3.5" height="1.5" fill="#AA151B"/>
+          <rect x="10" y="11" width="3.5" height="2.5" fill="#F1BF00"/>
+          <rect x="9.2" y="6.2" width="0.6" height="7.3" fill="#6B4C11" rx="0.3"/>
+          <rect x="13.7" y="6.2" width="0.6" height="7.3" fill="#6B4C11" rx="0.3"/>
+          <rect x="9" y="5.8" width="1" height="0.7" fill="#6B4C11" rx="0.2"/>
+          <rect x="13.4" y="5.8" width="1" height="0.7" fill="#6B4C11" rx="0.2"/>
+        </svg>
+      </button>
     </div>
     <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
   </div>
