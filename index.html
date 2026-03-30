@@ -15,7 +15,7 @@
     body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
     a{color:inherit;text-decoration:none}
     nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;gap:1rem}
-    .nav-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--green);cursor:pointer}
+    .nav-logo{cursor:pointer;display:flex;align-items:center}
     .nav-links{display:flex;gap:20px;list-style:none}
     .nav-links a{font-size:13px;color:var(--muted);transition:color .2s;cursor:pointer}
     .nav-links a:hover,.nav-links a.active{color:var(--green)}
@@ -43,7 +43,7 @@
     .hero{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
     .hero-text{padding:4rem 3rem 4rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
     .hero-tag{display:inline-block;background:var(--gl);color:var(--green);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:1.25rem;width:fit-content}
-    .hero h1{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;line-height:1.1;margin-bottom:1rem}
+    .hero h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1.1;margin-bottom:1rem;white-space:nowrap}
     .hero h1 em{font-style:italic;color:var(--green)}
     .hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:2rem;max-width:400px}
     .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -137,7 +137,7 @@
 <body>
 
 <nav>
-  <span class="nav-logo" onclick="go('home')">drassislab</span>
+  <span class="nav-logo" onclick="go('home')"><img src="assislab-logo.png" alt="Assis Lab" style="height:44px;width:44px;object-fit:contain;border-radius:8px;display:block;"/></span>
   <ul class="nav-links" id="nl">
     <li><a onclick="go('about')" data-pg="about" data-i="nav_about">About</a></li>
     <li><a onclick="go('publications','all')" data-pg="publications" data-i="nav_pub">Publications</a></li>
@@ -166,7 +166,7 @@
   <div class="hero">
     <div class="hero-text">
       <span class="hero-tag" data-i="hero_tag">Biologist · Physiologist · Herpetologist</span>
-      <h1>Dr. <em>Vania</em><br>Assis</h1>
+      <h1>Dr. <em>Vania</em> Assis</h1>
       <p class="hero-sub" data-i="hero_sub">Assistant Professor at the University of West Alabama. Exploring the interrelationships between stress, behavior, and immunity in amphibians and wildlife.</p>
       <div class="hero-btns">
         <span class="btn btn-primary" onclick="go('about')" data-i="hero_btn1">About me →</span>
@@ -234,15 +234,7 @@
       </div>
       <div>
         <p class="cttl" data-i="c_msg">Send a message</p>
-        <div class="gfw">
-          <!--
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0CqQHv3V4KfQGRLztHVv7eWUEA_juWh_NjWjWlWYNoaC_VQ/viewform?embedded=true" height="520" frameborder="0"></iframe>
-          -->
-          <div class="gfp">
-            <p data-i="gf_txt">To activate: go to <strong>forms.google.com</strong>, create your contact form, click <strong>Send → &lt;&gt; Embed</strong>, and replace this block with the iframe code.<br><br>Example:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code></p>
-            <a href="https://forms.google.com" target="_blank" class="btn btn-outline" style="margin-top:1rem" data-i="gf_btn">Create Google Form →</a>
-          </div>
-        </div>
+        <div class="gfw"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0CqQHv3V4KfQGRLztHVv7eWUEA_juWh_NjWjWlWYNoaC_VQ/viewform?embedded=true" width="100%" height="778" frameborder="0" marginheight="0" marginwidth="0" style="display:block;min-height:778px">Carregando…</iframe></div>
       </div>
     </div>
   </div>
@@ -331,7 +323,7 @@
 </div>
 
 <footer>
-  <span class="fb">drassislab.com</span>
+  <span class="fb"><img src="assislab-logo.png" alt="Assis Lab" style="height:36px;width:36px;object-fit:contain;border-radius:6px;margin-right:8px;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.9);"/>drassislab.com</span>
   <ul class="fl">
     <li><a onclick="go('about')" data-i="nav_about">About</a></li>
     <li><a onclick="go('publications','all')" data-i="nav_pub">Publications</a></li>
