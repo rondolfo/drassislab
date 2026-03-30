@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dra. Assis Lab — Biologia & Pesquisa</title>
+  <meta name="description" content="Página institucional da Dra. Assis — pesquisadora em biologia, publicações, projetos e orientações." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #1A6B3C;
+      --green-light: #E8F5EE;
+      --green-mid:   #C8E6D4;
+      --green-dark:  #145730;
+      --text:        #1a1a1a;
+      --muted:       #6b7280;
+      --border:      rgba(0,0,0,0.1);
+      --bg:          #ffffff;
+      --bg2:         #f9fafb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--green);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+    .hero-text {
+      padding: 4rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 380px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 22px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--green);
+      border: 1px solid var(--green);
+    }
+    .btn-outline:hover {
+      background: var(--green-light);
+    }
+    .hero-visual {
+      background: linear-gradient(135deg, #E8F5EE 0%, #C8E6D4 50%, #A8D4B8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(26,107,60,0.12);
+    }
+    .hero-blob.b1 { width: 350px; height: 350px; top: -80px; right: -80px; }
+    .hero-blob.b2 { width: 200px; height: 200px; bottom: -50px; left: -30px; }
+    .hero-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: #fff;
+      border: 5px solid #fff;
+      box-shadow: 0 12px 48px rgba(26,107,60,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--green);
+      text-align: center;
+      line-height: 1.5;
+      z-index: 1;
+      overflow: hidden;
+    }
+    /* Se quiser usar uma imagem real, substitua o conteúdo acima e adicione:
+       .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    */
+
+    /* ── STATS ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat {
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 3.5rem 2.5rem;
+    }
+    section:nth-child(even) {
+      background: var(--bg2);
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 2rem;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── SOBRE ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .about-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1.25rem;
+    }
+    .tag {
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .about-card {
+      background: var(--green-light);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+    .about-card-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--green);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .about-card ul {
+      list-style: none;
+    }
+    .about-card li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(26,107,60,0.15);
+    }
+    .about-card li:last-child { border-bottom: none; }
+
+    /* ── PUBLICAÇÕES ── */
+    .pub {
+      display: flex;
+      gap: 16px;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub:last-of-type { border-bottom: none; }
+    .pub-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--green);
+      font-weight: 700;
+      min-width: 40px;
+      padding-top: 2px;
+    }
+    .pub-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .pub-journal {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .pub-badge {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-style: normal;
+      font-weight: 500;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .pubs-footer {
+      margin-top: 1.5rem;
+    }
+
+    /* ── PROJETOS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .project-card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+    }
+    .project-icon {
+      font-size: 26px;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .project-name {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .project-status {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .status-active {
+      background: var(--green-light);
+      color: var(--green);
+    }
+    .status-concluded {
+      background: #f3f4f6;
+      color: var(--muted);
+    }
+
+    /* ── GALERIA ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .gallery-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--green-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--green);
+      font-weight: 500;
+      text-align: center;
+      position: relative;
+    }
+    .gallery-item.wide {
+      grid-column: span 2;
+      aspect-ratio: 2 / 1;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Placeholder visual enquanto não tem fotos */
+    .gallery-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 12px;
+    }
+    .gallery-placeholder span { font-size: 22px; }
+
+    /* ── ALUNOS ── */
+    .students-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .student-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg);
+      transition: border-color 0.2s;
+    }
+    .student-card:hover { border-color: var(--green); }
+    .student-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+    .student-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .student-level {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .students-note {
+      margin-top: 1.5rem;
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── PARCEIROS ── */
+    .partners {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .partner {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 14px;
+      color: var(--muted);
+      background: var(--bg);
+      font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .partner:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* ── CONTATO ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-title {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .contact-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    .contact-item a {
+      color: var(--green);
+      text-decoration: none;
+    }
+    .contact-item a:hover { text-decoration: underline; }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .form-input {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input:focus { border-color: var(--green); }
+    textarea.form-input {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: #fff;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .footer-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy {
+      font-size: 12px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 1rem 1.25rem; gap: 14px; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 280px; }
+      .hero h1 { font-size: 34px; }
+      .hero-text { padding: 2.5rem 1.25rem; }
+
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
+      .stat:nth-child(4) { border-right: none; border-top: 1px solid var(--border); }
+
+      section { padding: 2.5rem 1.25rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.wide { grid-column: span 2; }
+      .students-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .students-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#" class="nav-logo">drassislab</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#publicacoes">Publicações</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#alunos">Alunos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-text">
+      <span class="hero-tag">Bióloga · Pesquisadora · Professora</span>
+      <h1>Dra. <em>Assis</em><br>Lab</h1>
+      <p class="hero-sub">
+        Ciência com curiosidade, rigor e paixão. Pesquisa de ponta em biologia,
+        formando as próximas gerações de cientistas.
+      </p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="#publicacoes" class="btn btn-primary">Ver publicações →</a>
+        <a href="#contato" class="btn btn-outline">Entrar em contato</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-blob b1"></div>
+      <div class="hero-blob b2"></div>
+      <!-- Substitua o conteúdo abaixo por: <img src="foto-dra-assis.jpg" alt="Dra. Assis" /> -->
+      <div class="hero-photo">
+        Foto da<br>Dra. Assis<br><small style="font-size:11px; opacity:0.7;">(substituir pela foto)</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STATS ── -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-num">24</span>
+      <span class="stat-label">Publicações</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">8</span>
+      <span class="stat-label">Projetos ativos</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">12</span>
+      <span class="stat-label">Alunos orientados</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">6</span>
+      <span class="stat-label">Parcerias</span>
+    </div>
+  </div>
+
+  <!-- ── SOBRE ── -->
+  <section id="sobre">
+    <div class="section-header">
+      <h2>Sobre</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-text">
+          Biologista com doutorado em ciências naturais, atualmente professora assistente
+          na University of West Alabama. Minha pesquisa explora [área específica], com foco
+          em [tema principal]. Ao longo da carreira desenvolvi trabalhos em parceria com
+          instituições nacionais e internacionais, sempre guiada pela convicção de que
+          ciência boa é ciência que transforma vidas.
+        </p>
+        <p class="about-text" style="margin-top:1rem;">
+          [Adicione aqui mais um parágrafo sobre sua trajetória, motivações ou linha de pesquisa.]
+        </p>
+        <div class="tags">
+          <span class="tag">Biologia Molecular</span>
+          <span class="tag">Ecologia</span>
+          <span class="tag">Conservação</span>
+          <span class="tag">Genômica</span>
+          <span class="tag">Ensino Superior</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">Formação acadêmica</div>
+        <ul>
+          <li>Doutorado — [Universidade], [ano]</li>
+          <li>Mestrado — [Universidade], [ano]</li>
+          <li>Graduação — [Universidade], [ano]</li>
+          <li>Pós-doutorado — [Instituição], [ano]</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PUBLICAÇÕES ── -->
+  <section id="publicacoes">
+    <div class="section-header">
+      <h2>Publicações</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="pub">
+      <span class="pub-year">2024</span>
+      <div>
+        <p class="pub-title">Título do artigo mais recente aqui <span class="pub-badge">Nature</span></p>
+        <p class="pub-journal">Journal of Biological Sciences · DOI: 10.xxxx/xxxxx</p>
+      </div>
+    </div>
+    <div class="pub">
+      <span class="pub-year">2024</span>
+      <div>
+        <p class="pub-title">Segundo artigo do ano</p>
+        <p class="pub-journal">PLOS Biology · DOI: 10.xxxx/xxxxx</p>
+      </div>
+    </div>
+    <div class="pub">
+      <span class="pub-year">2023</span>
+      <div>
+        <p class="pub-title">Artigo de destaque — colaboração internacional <span class="pub-badge">Science</span></p>
+        <p class="pub-journal">Ecology & Evolution · DOI: 10.xxxx/xxxxx</p>
+      </div>
+    </div>
+    <div class="pub">
+      <span class="pub-year">2023</span>
+      <div>
+        <p class="pub-title">Artigo com parceiros brasileiros</p>
+        <p class="pub-journal">Science Advances · DOI: 10.xxxx/xxxxx</p>
+      </div>
+    </div>
+    <div class="pub">
+      <span class="pub-year">2022</span>
+      <div>
+        <p class="pub-title">Publicação anterior de referência</p>
+        <p class="pub-journal">Molecular Ecology · DOI: 10.xxxx/xxxxx</p>
+      </div>
+    </div>
+
+    <div class="pubs-footer">
+      <a href="https://scholar.google.com" target="_blank" class="btn btn-outline">
+        Ver todas no Google Scholar →
+      </a>
+    </div>
+  </section>
+
+  <!-- ── PROJETOS ── -->
+  <section id="projetos">
+    <div class="section-header">
+      <h2>Projetos</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-icon">🔬</span>
+        <p class="project-name">Nome do Projeto 1</p>
+        <p class="project-desc">Descrição breve do objetivo e metodologia. Financiado por [agência].</p>
+        <span class="project-status status-active">Em andamento</span>
+      </div>
+      <div class="project-card">
+        <span class="project-icon">🌿</span>
+        <p class="project-name">Nome do Projeto 2</p>
+        <p class="project-desc">Colaboração com parceiros internacionais em [tema].</p>
+        <span class="project-status status-active">Em andamento</span>
+      </div>
+      <div class="project-card">
+        <span class="project-icon">🧬</span>
+        <p class="project-name">Nome do Projeto 3</p>
+        <p class="project-desc">Pesquisa aplicada com impacto direto em [área/comunidade].</p>
+        <span class="project-status status-active">Em andamento</span>
+      </div>
+      <div class="project-card">
+        <span class="project-icon">🌎</span>
+        <p class="project-name">Nome do Projeto 4</p>
+        <p class="project-desc">Estudo de campo realizado em [local], entre [anos].</p>
+        <span class="project-status status-concluded">Concluído</span>
+      </div>
+      <div class="project-card">
+        <span class="project-icon">📊</span>
+        <p class="project-name">Nome do Projeto 5</p>
+        <p class="project-desc">Análise de dados e modelagem em parceria com [instituição].</p>
+        <span class="project-status status-concluded">Concluído</span>
+      </div>
+      <div class="project-card">
+        <span class="project-icon">🦋</span>
+        <p class="project-name">Nome do Projeto 6</p>
+        <p class="project-desc">Monitoramento de biodiversidade em [ecossistema].</p>
+        <span class="project-status status-concluded">Concluído</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALERIA ── -->
+  <section id="galeria">
+    <div class="section-header">
+      <h2>Galeria</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="gallery">
+      <!-- Substitua cada item por: <img src="foto.jpg" alt="descrição" /> dentro da div -->
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>📸</span>Campo</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🔬</span>Laboratório</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🎤</span>Congresso</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🌿</span>Coleta</div>
+      </div>
+      <div class="gallery-item wide">
+        <div class="gallery-placeholder"><span>👩‍🔬</span>Em campo com a equipe</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>📚</span>Orientação</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🎓</span>Defesa</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ALUNOS ── -->
+  <section id="alunos">
+    <div class="section-header">
+      <h2>Alunos</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="students-grid">
+      <div class="student-card">
+        <div class="student-avatar">MA</div>
+        <div>
+          <p class="student-name">Nome do Aluno 1</p>
+          <p class="student-level">Doutorado · [tema]</p>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-avatar">JS</div>
+        <div>
+          <p class="student-name">Nome do Aluno 2</p>
+          <p class="student-level">Doutorado · [tema]</p>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-avatar">CP</div>
+        <div>
+          <p class="student-name">Nome do Aluno 3</p>
+          <p class="student-level">Mestrado · [tema]</p>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-avatar">RL</div>
+        <div>
+          <p class="student-name">Nome do Aluno 4</p>
+          <p class="student-level">Mestrado · [tema]</p>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-avatar">BF</div>
+        <div>
+          <p class="student-name">Nome do Aluno 5</p>
+          <p class="student-level">Iniciação Científica</p>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-avatar">TM</div>
+        <div>
+          <p class="student-name">Nome do Aluno 6</p>
+          <p class="student-level">Iniciação Científica</p>
+        </div>
+      </div>
+    </div>
+    <p class="students-note">* Alunos egressos e colaboradores anteriores podem ser listados em seção dedicada.</p>
+  </section>
+
+  <!-- ── PARCEIROS ── -->
+  <section id="parceiros">
+    <div class="section-header">
+      <h2>Parceiros &amp; Instituições</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="partners">
+      <div class="partner">University of West Alabama</div>
+      <div class="partner">Instituição Parceira 2</div>
+      <div class="partner">Agência de Fomento</div>
+      <div class="partner">Laboratório Internacional</div>
+      <div class="partner">Universidade Brasileira</div>
+      <div class="partner">Organização de Conservação</div>
+    </div>
+  </section>
+
+  <!-- ── CONTATO ── -->
+  <section id="contato">
+    <div class="section-header">
+      <h2>Contato</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-title">Fale comigo</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-dot"></div>
+            <span>email@uwa.edu</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-dot"></div>
+            <span>University of West Alabama — Livingston, AL, USA</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-dot"></div>
+            <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-dot"></div>
+            <a href="https://orcid.org" target="_blank">ORCID</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-dot"></div>
+            <a href="http://lattes.cnpq.br" target="_blank">Currículo Lattes</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-dot"></div>
+            <a href="https://www.researchgate.net" target="_blank">ResearchGate</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="contact-title">Envie uma mensagem</p>
+        <div class="contact-form">
+          <input class="form-input" type="text" placeholder="Seu nome" />
+          <input class="form-input" type="email" placeholder="Seu e-mail" />
+          <input class="form-input" type="text" placeholder="Assunto" />
+          <textarea class="form-input" placeholder="Sua mensagem..."></textarea>
+          <button class="btn btn-primary" style="align-self:flex-start;">Enviar mensagem →</button>
+          <p style="font-size:12px; color:var(--muted);">* Para ativar o formulário, conecte a um serviço como Formspree ou Netlify Forms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-brand">drassislab.com</span>
+    <ul class="footer-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#publicacoes">Publicações</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Dra. Assis Lab · Feito com ciência e carinho</span>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>
