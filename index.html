@@ -4,613 +4,408 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dr. Vania Assis — Biologist & Researcher</title>
-  <meta name="description" content="Dr. Vania Regina Assis — Biologist, Physiologist and Herpetologist. Assistant Professor at UWA."/>
+  <meta name="description" content="Dr. Vania Regina de Assis — Biologist, Physiologist and Herpetologist. Assistant Professor at University of West Alabama."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --green:#1A6B3C;--green-light:#E8F5EE;--green-mid:#C8E6D4;--green-dark:#145730;
-      --text:#1a1a1a;--muted:#6b7280;--border:rgba(0,0,0,0.1);--bg:#ffffff;--bg2:#f9fafb;
-    }
+    :root{--green:#1A6B3C;--gl:#E8F5EE;--gm:#C8E6D4;--gd:#145730;--text:#1a1a1a;--muted:#6b7280;--border:rgba(0,0,0,0.1);--bg:#fff;--bg2:#f9fafb}
     html{scroll-behavior:smooth}
     body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
     a{color:inherit;text-decoration:none}
-
-    /* NAV */
     nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;gap:1rem}
-    .nav-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--green);letter-spacing:-.5px}
+    .nav-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--green);cursor:pointer}
     .nav-links{display:flex;gap:20px;list-style:none}
-    .nav-links a{font-size:13px;color:var(--muted);transition:color .2s}
-    .nav-links a:hover{color:var(--green)}
+    .nav-links a{font-size:13px;color:var(--muted);transition:color .2s;cursor:pointer}
+    .nav-links a:hover,.nav-links a.active{color:var(--green)}
     .nav-right{display:flex;align-items:center;gap:12px}
     .flags{display:flex;gap:6px;align-items:center}
     .flag-btn{background:none;border:1.5px solid transparent;border-radius:5px;cursor:pointer;padding:2px;transition:border-color .2s,box-shadow .2s;line-height:0;overflow:hidden}
     .flag-btn svg{display:block;width:28px;height:20px;border-radius:3px}
-    .flag-btn.active{border-color:var(--green);box-shadow:0 0 0 2px var(--green-light)}
-    .flag-btn:hover{border-color:var(--green-mid)}
+    .flag-btn.active{border-color:var(--green);box-shadow:0 0 0 2px var(--gl)}
+    .flag-btn:hover{border-color:var(--gm)}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
     .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px}
-
+    .page{display:none}.page.active{display:block}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-primary{background:var(--green);color:#fff}.btn-primary:hover{background:var(--gd);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}.btn-outline:hover{background:var(--gl)}
+    .section{padding:3.5rem 2.5rem}.section.bg2{background:var(--bg2)}
+    .sh{display:flex;align-items:center;gap:16px;margin-bottom:2rem}
+    .sh h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;white-space:nowrap}
+    .sh-line{flex:1;height:1px;background:var(--border)}
+    .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer;margin-bottom:1.5rem;transition:color .2s}
+    .back:hover{color:var(--green)}
+    .page-ttl{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;margin-bottom:.5rem}
+    .page-sub{font-size:15px;color:var(--muted);margin-bottom:2rem}
     /* HERO */
     .hero{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
-    .hero-text{padding:4rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
-    .hero-tag{display:inline-block;background:var(--green-light);color:var(--green);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:1.25rem;width:fit-content}
+    .hero-text{padding:4rem 3rem 4rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
+    .hero-tag{display:inline-block;background:var(--gl);color:var(--green);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:1.25rem;width:fit-content}
     .hero h1{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;line-height:1.1;margin-bottom:1rem}
     .hero h1 em{font-style:italic;color:var(--green)}
     .hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:2rem;max-width:400px}
-    .btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:30px;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s;border:none;font-family:'DM Sans',sans-serif}
-    .btn-primary{background:var(--green);color:#fff}
-    .btn-primary:hover{background:var(--green-dark);transform:translateY(-1px)}
-    .btn-outline{background:transparent;color:var(--green);border:1.5px solid var(--green)}
-    .btn-outline:hover{background:var(--green-light)}
     .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-    .hero-visual{background:linear-gradient(135deg,#E8F5EE 0%,#C8E6D4 50%,#A8D4B8 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-    .hero-blob{position:absolute;border-radius:50%;background:rgba(26,107,60,.12)}
-    .hero-blob.b1{width:350px;height:350px;top:-80px;right:-80px}
-    .hero-blob.b2{width:200px;height:200px;bottom:-50px;left:-30px}
+    .hero-vis{background:linear-gradient(135deg,#E8F5EE,#C8E6D4,#A8D4B8);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .hblob{position:absolute;border-radius:50%;background:rgba(26,107,60,.12)}
+    .b1{width:350px;height:350px;top:-80px;right:-80px}.b2{width:200px;height:200px;bottom:-50px;left:-30px}
     .hero-photo{width:240px;height:240px;border-radius:50%;border:5px solid #fff;box-shadow:0 12px 48px rgba(26,107,60,.2);overflow:hidden;z-index:1}
     .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
-
     /* STATS */
     .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .stat{padding:1.5rem 1rem;text-align:center;border-right:1px solid var(--border)}
-    .stat:last-child{border-right:none}
-    .stat-num{display:block;font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--green);line-height:1;margin-bottom:4px}
-    .stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
-
-    /* SECTIONS */
-    section{padding:3.5rem 2.5rem;max-width:1100px;margin:0 auto}
-    .section-wrap{padding:0;border-bottom:1px solid var(--border)}
-    .section-wrap.alt{background:var(--bg2)}
-    .section-header{display:flex;align-items:center;gap:16px;margin-bottom:2rem}
-    .section-header h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;white-space:nowrap}
-    .section-line{flex:1;height:1px;background:var(--border)}
-
-    /* ABOUT */
-    .about-grid{display:grid;grid-template-columns:2fr 1fr;gap:2.5rem;align-items:start}
-    .about-text{font-size:15px;line-height:1.85;color:var(--muted)}
-    .about-text+.about-text{margin-top:.75rem}
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
-    .tag{background:var(--green-light);color:var(--green);font-size:12px;padding:4px 12px;border-radius:20px;font-weight:500}
-    .about-card{background:var(--green-light);border-radius:16px;padding:1.5rem}
-    .about-card-title{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:500;margin-bottom:1rem}
-    .about-card ul{list-style:none}
-    .about-card li{font-size:13px;color:var(--muted);padding:6px 0;border-bottom:1px solid rgba(26,107,60,.15)}
-    .about-card li:last-child{border-bottom:none}
-    .about-card li strong{color:var(--text);font-weight:500}
-
-    /* RESEARCH */
-    .research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .research-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:border-color .2s,transform .2s}
-    .research-card:hover{border-color:var(--green);transform:translateY(-2px)}
-    .research-icon{font-size:24px;margin-bottom:.6rem;display:block}
-    .research-name{font-size:14px;font-weight:500;margin-bottom:4px}
-    .research-desc{font-size:12px;color:var(--muted);line-height:1.6}
-
+    .stat{padding:1.5rem 1rem;text-align:center;border-right:1px solid var(--border)}.stat:last-child{border-right:none}
+    .stat-n{display:block;font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--green);line-height:1;margin-bottom:4px}
+    .stat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+    /* RESEARCH CARDS */
+    .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .rc{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:1.5rem;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+    .rc::after{content:'View publications →';position:absolute;bottom:1rem;right:1rem;font-size:11px;color:var(--green);opacity:0;transition:opacity .2s;font-weight:500}
+    .rc:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,107,60,.1)}
+    .rc:hover::after{opacity:1}
+    .ri{font-size:28px;margin-bottom:.75rem;display:block}
+    .rn{font-size:15px;font-weight:500;margin-bottom:6px}
+    .rd{font-size:13px;color:var(--muted);line-height:1.6;padding-bottom:1.5rem}
+    .rcnt{font-size:11px;color:var(--green);font-weight:500;background:var(--gl);padding:3px 10px;border-radius:20px;display:inline-block;margin-top:.5rem}
     /* PUBLICATIONS */
-    .pub{display:flex;gap:16px;padding:1.25rem 0;border-bottom:1px solid var(--border)}
-    .pub:last-of-type{border-bottom:none}
-    .pub-year{font-family:'Playfair Display',serif;font-size:14px;color:var(--green);font-weight:700;min-width:40px;padding-top:2px;flex-shrink:0}
-    .pub-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;line-height:1.4}
-    .pub-journal{font-size:12px;color:var(--muted);font-style:italic}
-    .pub-badge{display:inline-block;background:var(--green-light);color:var(--green);font-size:10px;padding:2px 8px;border-radius:10px;font-style:normal;font-weight:500;margin-left:6px;vertical-align:middle}
-    .pub-doi{font-size:11px;color:var(--green);margin-top:3px}
-    .pubs-footer{margin-top:1.5rem}
-    .badge-editorial{display:inline-flex;align-items:center;gap:6px;background:#fff3cd;color:#856404;font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid #ffc107;margin-bottom:1.5rem;font-weight:500}
-
+    .pub-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem}
+    .fp{padding:6px 16px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--border);color:var(--muted);background:var(--bg);transition:all .2s}
+    .fp:hover,.fp.active{background:var(--green);color:#fff;border-color:var(--green)}
+    .pub{display:flex;gap:16px;padding:1.25rem 0;border-bottom:1px solid var(--border);animation:fi .3s ease}
+    .pub:last-child{border-bottom:none}
+    @keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    .pub-yr{font-family:'Playfair Display',serif;font-size:14px;color:var(--green);font-weight:700;min-width:40px;padding-top:2px}
+    .pub-ttl{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px}
+    .pub-jnl{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:6px}
+    .pub-tags{display:flex;gap:6px;flex-wrap:wrap}
+    .pt{font-size:10px;padding:2px 8px;border-radius:10px;background:var(--gl);color:var(--green);font-weight:500}
+    .pb{font-size:10px;padding:2px 8px;border-radius:10px;background:#FEF3C7;color:#92400E;font-weight:500}
+    .pub-empty{padding:2rem;text-align:center;color:var(--muted);font-size:14px;font-style:italic}
+    .pubs-footer{margin-top:1.5rem;display:flex;gap:10px;flex-wrap:wrap}
+    /* ABOUT */
+    .ag{display:grid;grid-template-columns:2fr 1fr;gap:2.5rem;align-items:start}
+    .at{font-size:15px;line-height:1.85;color:var(--muted);margin-bottom:1rem}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
+    .tag{background:var(--gl);color:var(--green);font-size:12px;padding:4px 12px;border-radius:20px;font-weight:500}
+    .edu-card{background:var(--gl);border-radius:16px;padding:1.5rem}
+    .edu-ttl{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--green);font-weight:500;margin-bottom:1rem}
+    .edu-i{padding:8px 0;border-bottom:1px solid rgba(26,107,60,.15)}.edu-i:last-child{border-bottom:none}
+    .edu-deg{font-size:13px;font-weight:500;color:var(--text)}.edu-pl{font-size:12px;color:var(--muted)}
     /* STUDENTS */
-    .students-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .student-card{border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;display:flex;align-items:center;gap:12px;transition:border-color .2s}
-    .student-card:hover{border-color:var(--green)}
-    .student-avatar{width:40px;height:40px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--green);flex-shrink:0}
-    .student-name{font-size:14px;font-weight:500;margin-bottom:2px}
-    .student-level{font-size:12px;color:var(--muted)}
-
+    .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .sc{border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;display:flex;align-items:center;gap:12px;transition:border-color .2s}
+    .sc:hover{border-color:var(--green)}
+    .sav{width:40px;height:40px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--green);flex-shrink:0}
+    .sn{font-size:13px;font-weight:500;margin-bottom:2px}.sl{font-size:11px;color:var(--muted)}
+    /* GALLERY */
+    .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .gi{aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--gm);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--green);text-align:center}
+    .gi.wide{grid-column:span 2;aspect-ratio:2/1}
+    .gi img{width:100%;height:100%;object-fit:cover}
+    .gp{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px}
+    .gp span:first-child{font-size:22px}
     /* PARTNERS */
-    .partners{display:flex;gap:10px;flex-wrap:wrap}
-    .partner{border:1px solid var(--border);border-radius:10px;padding:10px 20px;font-size:13px;color:var(--muted);font-weight:500;transition:border-color .2s,color .2s}
+    .partners{display:flex;gap:12px;flex-wrap:wrap}
+    .partner{border:1px solid var(--border);border-radius:10px;padding:12px 20px;font-size:13px;color:var(--muted);font-weight:500;transition:all .2s}
     .partner:hover{border-color:var(--green);color:var(--green)}
-
     /* CONTACT */
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-    .contact-subtitle{font-size:16px;font-weight:500;margin-bottom:1.25rem;color:var(--text)}
-    .contact-info{display:flex;flex-direction:column;gap:10px}
-    .contact-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
-    .contact-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0}
-    .contact-item a{color:var(--green)}
-    .contact-item a:hover{text-decoration:underline}
-    .social-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem}
-    .social-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--muted);transition:all .2s;font-weight:500}
-    .social-btn:hover{border-color:var(--green);color:var(--green)}
-    .contact-form{display:flex;flex-direction:column;gap:10px}
-    .form-input{padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);outline:none;transition:border-color .2s;width:100%}
-    .form-input:focus{border-color:var(--green)}
-    textarea.form-input{resize:vertical;min-height:100px}
-    .form-note{font-size:11px;color:var(--muted);margin-top:2px}
-
+    .cg{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+    .cttl{font-size:16px;font-weight:500;margin-bottom:1.25rem}
+    .ci{display:flex;flex-direction:column;gap:12px}
+    .citem{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted)}
+    .cdot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:6px}
+    .citem a{color:var(--green)}.citem a:hover{text-decoration:underline}
+    .slinks{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.5rem}
+    .sbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--muted);transition:all .2s;font-weight:500}
+    .sbtn:hover{border-color:var(--green);color:var(--green);background:var(--gl)}
+    .gfw{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2)}
+    .gfw iframe{width:100%;border:none;display:block}
+    .gfp{padding:2rem;text-align:center}
+    .gfp p{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.7}
+    .gfp code{font-size:11px;background:var(--bg);padding:2px 6px;border-radius:4px;border:1px solid var(--border);font-family:monospace}
     /* FOOTER */
-    footer{background:var(--text);color:rgba(255,255,255,.6);padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-    .footer-brand{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#fff}
-    .footer-links{display:flex;gap:20px;list-style:none}
-    .footer-links a{font-size:13px;color:rgba(255,255,255,.5);transition:color .2s}
-    .footer-links a:hover{color:#fff}
-    .footer-copy{font-size:12px}
-
-    /* MOBILE */
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .hero-visual{min-height:280px;order:-1}
-      .hero h1{font-size:34px}
-      .hero-text{padding:2.5rem 1.5rem}
-      .stats{grid-template-columns:repeat(2,1fr)}
-      .stat:nth-child(2){border-right:none}
-      .stat:nth-child(3){border-top:1px solid var(--border);border-right:1px solid var(--border)}
-      .stat:nth-child(4){border-top:1px solid var(--border);border-right:none}
-      section{padding:2.5rem 1.25rem}
-      .about-grid{grid-template-columns:1fr}
-      .research-grid{grid-template-columns:1fr 1fr}
-      .students-grid{grid-template-columns:1fr 1fr}
-      .contact-grid{grid-template-columns:1fr;gap:2rem}
-      .nav-links{display:none;flex-direction:column;position:absolute;top:61px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:1rem 1.5rem;gap:14px;z-index:99}
-      .nav-links.open{display:flex}
-      .nav-toggle{display:flex}
-      footer{flex-direction:column;text-align:center}
-    }
-    @media(max-width:480px){
-      .research-grid{grid-template-columns:1fr}
-      .students-grid{grid-template-columns:1fr}
-      nav{padding:.9rem 1.25rem}
-    }
+    footer{background:#111;color:rgba(255,255,255,.5);padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .fb{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#fff}
+    .fl{display:flex;gap:20px;list-style:none}
+    .fl a{font-size:12px;color:rgba(255,255,255,.45);cursor:pointer;transition:color .2s}.fl a:hover{color:#fff}
+    .fc{font-size:11px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-vis{min-height:280px}.hero h1{font-size:36px}.hero-text{padding:2.5rem 1.5rem}.ag{grid-template-columns:1fr}.rg{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:768px){nav{padding:1rem 1.25rem}.nav-links{display:none;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:1rem 1.5rem;gap:14px}.nav-links.open{display:flex}.nav-toggle{display:flex}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(3){border-top:1px solid var(--border)}.stat:nth-child(4){border-right:none;border-top:1px solid var(--border)}.section{padding:2.5rem 1.25rem}.rg{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr)}.sg{grid-template-columns:1fr 1fr}.cg{grid-template-columns:1fr;gap:2rem}footer{flex-direction:column;text-align:center}.fl{justify-content:center}}
+    @media(max-width:480px){.sg{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">drassislab</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about" data-i="nav_about">About</a></li>
-    <li><a href="#research" data-i="nav_research">Research</a></li>
-    <li><a href="#publications" data-i="nav_publications">Publications</a></li>
-    <li><a href="#students" data-i="nav_students">Students</a></li>
-    <li><a href="#contact" data-i="nav_contact">Contact</a></li>
+  <span class="nav-logo" onclick="go('home')">drassislab</span>
+  <ul class="nav-links" id="nl">
+    <li><a onclick="go('about')" data-pg="about" data-i="nav_about">About</a></li>
+    <li><a onclick="go('publications','all')" data-pg="publications" data-i="nav_pub">Publications</a></li>
+    <li><a onclick="go('students')" data-pg="students" data-i="nav_students">Students</a></li>
+    <li><a onclick="go('gallery')" data-pg="gallery" data-i="nav_gallery">Gallery</a></li>
+    <li><a onclick="goContact()" data-i="nav_contact">Contact</a></li>
   </ul>
   <div class="nav-right">
     <div class="flags">
-      <!-- USA -->
       <button class="flag-btn active" onclick="setLang('en')" title="English">
-        <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
-          <rect width="28" height="20" fill="#B22234"/>
-          <rect y="1.54" width="28" height="1.54" fill="#fff"/>
-          <rect y="3.08" width="28" height="1.54" fill="#B22234"/>
-          <rect y="4.62" width="28" height="1.54" fill="#fff"/>
-          <rect y="6.15" width="28" height="1.54" fill="#B22234"/>
-          <rect y="7.69" width="28" height="1.54" fill="#fff"/>
-          <rect y="9.23" width="28" height="1.54" fill="#B22234"/>
-          <rect y="10.77" width="28" height="1.54" fill="#fff"/>
-          <rect y="12.31" width="28" height="1.54" fill="#B22234"/>
-          <rect y="13.85" width="28" height="1.54" fill="#fff"/>
-          <rect y="15.38" width="28" height="1.54" fill="#B22234"/>
-          <rect y="16.92" width="28" height="1.54" fill="#fff"/>
-          <rect width="11.2" height="10.77" fill="#3C3B6E"/>
-          <!-- stars simplified as small dots -->
-          <g fill="#fff" font-size="2">
-            <circle cx="1.4" cy="1.1" r="0.7"/><circle cx="2.8" cy="1.1" r="0.7"/><circle cx="4.2" cy="1.1" r="0.7"/><circle cx="5.6" cy="1.1" r="0.7"/><circle cx="7" cy="1.1" r="0.7"/><circle cx="8.4" cy="1.1" r="0.7"/>
-            <circle cx="2.1" cy="2.2" r="0.7"/><circle cx="3.5" cy="2.2" r="0.7"/><circle cx="4.9" cy="2.2" r="0.7"/><circle cx="6.3" cy="2.2" r="0.7"/><circle cx="7.7" cy="2.2" r="0.7"/>
-            <circle cx="1.4" cy="3.3" r="0.7"/><circle cx="2.8" cy="3.3" r="0.7"/><circle cx="4.2" cy="3.3" r="0.7"/><circle cx="5.6" cy="3.3" r="0.7"/><circle cx="7" cy="3.3" r="0.7"/><circle cx="8.4" cy="3.3" r="0.7"/>
-            <circle cx="2.1" cy="4.4" r="0.7"/><circle cx="3.5" cy="4.4" r="0.7"/><circle cx="4.9" cy="4.4" r="0.7"/><circle cx="6.3" cy="4.4" r="0.7"/><circle cx="7.7" cy="4.4" r="0.7"/>
-            <circle cx="1.4" cy="5.5" r="0.7"/><circle cx="2.8" cy="5.5" r="0.7"/><circle cx="4.2" cy="5.5" r="0.7"/><circle cx="5.6" cy="5.5" r="0.7"/><circle cx="7" cy="5.5" r="0.7"/><circle cx="8.4" cy="5.5" r="0.7"/>
-            <circle cx="2.1" cy="6.6" r="0.7"/><circle cx="3.5" cy="6.6" r="0.7"/><circle cx="4.9" cy="6.6" r="0.7"/><circle cx="6.3" cy="6.6" r="0.7"/><circle cx="7.7" cy="6.6" r="0.7"/>
-            <circle cx="1.4" cy="7.7" r="0.7"/><circle cx="2.8" cy="7.7" r="0.7"/><circle cx="4.2" cy="7.7" r="0.7"/><circle cx="5.6" cy="7.7" r="0.7"/><circle cx="7" cy="7.7" r="0.7"/><circle cx="8.4" cy="7.7" r="0.7"/>
-            <circle cx="2.1" cy="8.8" r="0.7"/><circle cx="3.5" cy="8.8" r="0.7"/><circle cx="4.9" cy="8.8" r="0.7"/><circle cx="6.3" cy="8.8" r="0.7"/><circle cx="7.7" cy="8.8" r="0.7"/>
-            <circle cx="1.4" cy="9.9" r="0.7"/><circle cx="2.8" cy="9.9" r="0.7"/><circle cx="4.2" cy="9.9" r="0.7"/><circle cx="5.6" cy="9.9" r="0.7"/><circle cx="7" cy="9.9" r="0.7"/><circle cx="8.4" cy="9.9" r="0.7"/>
-          </g>
-        </svg>
+        <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" fill="#B22234"/><rect y="1.54" width="28" height="1.54" fill="#fff"/><rect y="4.62" width="28" height="1.54" fill="#fff"/><rect y="7.69" width="28" height="1.54" fill="#fff"/><rect y="10.77" width="28" height="1.54" fill="#fff"/><rect y="13.85" width="28" height="1.54" fill="#fff"/><rect y="16.92" width="28" height="1.54" fill="#fff"/><rect width="11.2" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="1.4" cy="1.1" r="0.7"/><circle cx="2.8" cy="1.1" r="0.7"/><circle cx="4.2" cy="1.1" r="0.7"/><circle cx="5.6" cy="1.1" r="0.7"/><circle cx="7" cy="1.1" r="0.7"/><circle cx="8.4" cy="1.1" r="0.7"/><circle cx="2.1" cy="2.2" r="0.7"/><circle cx="3.5" cy="2.2" r="0.7"/><circle cx="4.9" cy="2.2" r="0.7"/><circle cx="6.3" cy="2.2" r="0.7"/><circle cx="7.7" cy="2.2" r="0.7"/><circle cx="1.4" cy="3.3" r="0.7"/><circle cx="2.8" cy="3.3" r="0.7"/><circle cx="4.2" cy="3.3" r="0.7"/><circle cx="5.6" cy="3.3" r="0.7"/><circle cx="7" cy="3.3" r="0.7"/><circle cx="8.4" cy="3.3" r="0.7"/><circle cx="2.1" cy="4.4" r="0.7"/><circle cx="3.5" cy="4.4" r="0.7"/><circle cx="4.9" cy="4.4" r="0.7"/><circle cx="6.3" cy="4.4" r="0.7"/><circle cx="7.7" cy="4.4" r="0.7"/><circle cx="1.4" cy="5.5" r="0.7"/><circle cx="2.8" cy="5.5" r="0.7"/><circle cx="4.2" cy="5.5" r="0.7"/><circle cx="5.6" cy="5.5" r="0.7"/><circle cx="7" cy="5.5" r="0.7"/><circle cx="8.4" cy="5.5" r="0.7"/><circle cx="2.1" cy="6.6" r="0.7"/><circle cx="3.5" cy="6.6" r="0.7"/><circle cx="4.9" cy="6.6" r="0.7"/><circle cx="6.3" cy="6.6" r="0.7"/><circle cx="7.7" cy="6.6" r="0.7"/><circle cx="1.4" cy="7.7" r="0.7"/><circle cx="2.8" cy="7.7" r="0.7"/><circle cx="4.2" cy="7.7" r="0.7"/><circle cx="5.6" cy="7.7" r="0.7"/><circle cx="7" cy="7.7" r="0.7"/><circle cx="8.4" cy="7.7" r="0.7"/><circle cx="2.1" cy="8.8" r="0.7"/><circle cx="3.5" cy="8.8" r="0.7"/><circle cx="4.9" cy="8.8" r="0.7"/><circle cx="6.3" cy="8.8" r="0.7"/><circle cx="7.7" cy="8.8" r="0.7"/><circle cx="1.4" cy="9.9" r="0.7"/><circle cx="2.8" cy="9.9" r="0.7"/><circle cx="4.2" cy="9.9" r="0.7"/><circle cx="5.6" cy="9.9" r="0.7"/><circle cx="7" cy="9.9" r="0.7"/><circle cx="8.4" cy="9.9" r="0.7"/></g></svg>
       </button>
-      <!-- Brazil -->
       <button class="flag-btn" onclick="setLang('pt')" title="Português">
-        <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
-          <rect width="28" height="20" fill="#009C3B"/>
-          <polygon points="14,2 26,10 14,18 2,10" fill="#FFDF00"/>
-          <circle cx="14" cy="10" r="4.2" fill="#002776"/>
-          <path d="M10.2,8.5 Q14,7 17.8,8.5" stroke="#fff" stroke-width="0.7" fill="none"/>
-          <text x="14" y="11.5" text-anchor="middle" fill="#fff" font-size="2.2" font-family="sans-serif" font-weight="bold" letter-spacing="0.3">BRASIL</text>
-        </svg>
+        <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" fill="#009C3B"/><polygon points="14,2 26,10 14,18 2,10" fill="#FFDF00"/><circle cx="14" cy="10" r="4.2" fill="#002776"/><path d="M10.2,8.5 Q14,7 17.8,8.5" stroke="#fff" stroke-width="0.7" fill="none"/><text x="14" y="11.5" text-anchor="middle" fill="#fff" font-size="2.2" font-family="sans-serif" font-weight="bold" letter-spacing="0.3">BRASIL</text></svg>
       </button>
-      <!-- Spain -->
       <button class="flag-btn" onclick="setLang('es')" title="Español">
-        <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
-          <rect width="28" height="20" fill="#AA151B"/>
-          <rect y="5" width="28" height="10" fill="#F1BF00"/>
-          <!-- coat of arms simplified -->
-          <rect x="10" y="6.5" width="3.5" height="7" fill="#AA151B" rx="0.5"/>
-          <rect x="10" y="6.5" width="3.5" height="7" fill="none" stroke="#8B0000" stroke-width="0.3"/>
-          <rect x="10" y="6.5" width="3.5" height="3" fill="#0039A6"/>
-          <rect x="10" y="9.5" width="3.5" height="1.5" fill="#AA151B"/>
-          <rect x="10" y="11" width="3.5" height="2.5" fill="#F1BF00"/>
-          <rect x="9.2" y="6.2" width="0.6" height="7.3" fill="#6B4C11" rx="0.3"/>
-          <rect x="13.7" y="6.2" width="0.6" height="7.3" fill="#6B4C11" rx="0.3"/>
-          <rect x="9" y="5.8" width="1" height="0.7" fill="#6B4C11" rx="0.2"/>
-          <rect x="13.4" y="5.8" width="1" height="0.7" fill="#6B4C11" rx="0.2"/>
-        </svg>
+        <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" fill="#AA151B"/><rect y="5" width="28" height="10" fill="#F1BF00"/><rect x="10" y="6.5" width="3.5" height="7" fill="#AA151B" rx="0.5"/><rect x="10" y="6.5" width="3.5" height="3" fill="#0039A6"/><rect x="10" y="9.5" width="3.5" height="1.5" fill="#AA151B"/><rect x="10" y="11" width="3.5" height="2.5" fill="#F1BF00"/><rect x="9.2" y="6.2" width="0.6" height="7.3" fill="#6B4C11" rx="0.3"/><rect x="13.7" y="6.2" width="0.6" height="7.3" fill="#6B4C11" rx="0.3"/></svg>
       </button>
     </div>
-    <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="nt"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-text">
-    <span class="hero-tag" data-i="hero_tag">Biologist · Physiologist · Herpetologist</span>
-    <h1>Dr. <em>Vania</em><br>Assis</h1>
-    <p class="hero-sub" data-i="hero_sub">Assistant Professor at the University of West Alabama. Exploring the interrelationships between stress, behavior and immunity in amphibians and wildlife.</p>
-    <div class="hero-btns">
-      <a href="#publications" class="btn btn-primary" data-i="btn_pubs">View publications →</a>
-      <a href="#contact" class="btn btn-outline" data-i="btn_contact">Get in touch</a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-blob b1"></div>
-    <div class="hero-blob b2"></div>
-    <div class="hero-photo">
-      <img src="data:image/jpeg;base64,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" alt="Dr. Vania Assis"/>
-    </div>
-  </div>
-</div>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><span class="stat-num">30+</span><span class="stat-label" data-i="stat_pubs">Publications</span></div>
-  <div class="stat"><span class="stat-num">2025</span><span class="stat-label" data-i="stat_latest">Latest paper</span></div>
-  <div class="stat"><span class="stat-num">USP</span><span class="stat-label" data-i="stat_phd">PhD · Post-Doc</span></div>
-  <div class="stat"><span class="stat-num">UWA</span><span class="stat-label" data-i="stat_position">Asst. Professor</span></div>
-</div>
-
-<!-- ABOUT -->
-<div class="section-wrap">
-<section id="about">
-  <div class="section-header"><h2 data-i="nav_about">About</h2><div class="section-line"></div></div>
-  <div class="about-grid">
-    <div>
-      <p class="about-text" data-i="about_p1">I am a biologist, physiologist, and herpetologist exploring the interrelationships between stress, behavior and immunity. I graduated in Biological Sciences from UNESP (2007), earned my Master of Science in General Physiology from USP (2010), completed my PhD in Sciences (General Physiology) also from USP (2015), and concluded a Post-Doctorate at USP (2020).</p>
-      <p class="about-text" data-i="about_p2">My research focuses on ecoimmunology, stress endocrinology, conservation, behavior, and reproductive physiology — primarily in amphibians. I use approaches such as transdermal corticosterone application to simulate changes related to acute stress responses, restraint challenges, and immunological challenges. Currently at UWA, I am investigating the causative agent of Lyme disease (Borrelia burgdorferi) using epigenetic and immune mechanisms in Peromyscus mice.</p>
-      <div class="tags">
-        <span class="tag">Ecoimmunology</span><span class="tag">Herpetology</span>
-        <span class="tag">Stress Physiology</span><span class="tag">Endocrinology</span>
-        <span class="tag">Conservation Biology</span><span class="tag">Amphibian Biology</span>
-        <span class="tag">Lyme Disease</span><span class="tag">Comparative Physiology</span>
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-text">
+      <span class="hero-tag" data-i="hero_tag">Biologist · Physiologist · Herpetologist</span>
+      <h1>Dr. <em>Vania</em><br>Assis</h1>
+      <p class="hero-sub" data-i="hero_sub">Assistant Professor at the University of West Alabama. Exploring the interrelationships between stress, behavior, and immunity in amphibians and wildlife.</p>
+      <div class="hero-btns">
+        <span class="btn btn-primary" onclick="go('about')" data-i="hero_btn1">About me →</span>
+        <span class="btn btn-outline" onclick="goContact()" data-i="hero_btn2">Get in Touch</span>
       </div>
     </div>
-    <div class="about-card">
-      <div class="about-card-title" data-i="about_formation">Academic Training</div>
-      <ul>
-        <li><strong data-i="about_postdoc">Post-Doctorate</strong> — USP, 2020</li>
-        <li><strong data-i="about_phd_label">PhD</strong> — USP, 2015</li>
-        <li><strong data-i="about_msc">Master of Science</strong> — USP, 2010</li>
-        <li><strong data-i="about_bsc">Bachelor</strong> — UNESP, 2007</li>
-        <li><strong>UWA</strong> — College of Natural Sciences &amp; Mathematics</li>
-      </ul>
+    <div class="hero-vis">
+      <div class="hblob b1"></div><div class="hblob b2"></div>
+      <div class="hero-photo"><img src="vania.jpeg" alt="Dr. Vania Assis"/></div>
     </div>
   </div>
-</section>
-</div>
 
-<!-- RESEARCH -->
-<div class="section-wrap alt">
-<section id="research">
-  <div class="section-header"><h2 data-i="nav_research">Research</h2><div class="section-line"></div></div>
-  <div class="research-grid">
-    <div class="research-card">
-      <span class="research-icon">🐸</span>
-      <p class="research-name" data-i="res1_title">Amphibian Ecoimmunology</p>
-      <p class="research-desc" data-i="res1_desc">Stress-induced immunomodulation in amphibians: acute vs. chronic stressors, corticosterone effects on cellular and humoral immunity.</p>
-    </div>
-    <div class="research-card">
-      <span class="research-icon">🧪</span>
-      <p class="research-name" data-i="res2_title">Stress Endocrinology</p>
-      <p class="research-desc" data-i="res2_desc">HPI axis activation, corticosterone and testosterone plasma dynamics, transdermal hormone application as experimental tool.</p>
-    </div>
-    <div class="research-card">
-      <span class="research-icon">🦠</span>
-      <p class="research-name" data-i="res3_title">Disease & Conservation</p>
-      <p class="research-desc" data-i="res3_desc">Chytridiomycosis, Batrachochytrium dendrobatidis (Bd), ranavirus, and amphibian population declines driven by climate change.</p>
-    </div>
-    <div class="research-card">
-      <span class="research-icon">🐭</span>
-      <p class="research-name" data-i="res4_title">Lyme Disease (Current)</p>
-      <p class="research-desc" data-i="res4_desc">Investigating Borrelia burgdorferi using epigenetic and immune mechanisms in Peromyscus leucopus and P. maniculatus at UWA.</p>
-    </div>
-    <div class="research-card">
-      <span class="research-icon">🌎</span>
-      <p class="research-name" data-i="res5_title">Invasive Species</p>
-      <p class="research-desc" data-i="res5_desc">Stress and immune response profiles in invasive cane toads (Rhinella marina) in Florida compared to native species.</p>
-    </div>
-    <div class="research-card">
-      <span class="research-icon">📊</span>
-      <p class="research-name" data-i="res6_title">Neuroimmune-Endocrine</p>
-      <p class="research-desc" data-i="res6_desc">Integrative approach linking behavior, reproductive endocrinology, and immune response in anurans using phagocytosis and NLR markers.</p>
+  <div class="stats">
+    <div class="stat"><span class="stat-n">40+</span><span class="stat-l" data-i="stat_pub">Publications</span></div>
+    <div class="stat"><span class="stat-n">700+</span><span class="stat-l" data-i="stat_cit">Citations</span></div>
+    <div class="stat"><span class="stat-n">18+</span><span class="stat-l" data-i="stat_yrs">Years Research</span></div>
+    <div class="stat"><span class="stat-n">4</span><span class="stat-l" data-i="stat_inst">Institutions</span></div>
+  </div>
+
+  <div class="section">
+    <div class="sh"><h2 data-i="r_title">Research Areas</h2><div class="sh-line"></div></div>
+    <div class="rg">
+      <div class="rc" onclick="go('publications','ecoimmunology')"><span class="ri">🐸</span><p class="rn" data-i="r1n">Amphibian Ecoimmunology</p><p class="rd" data-i="r1d">How stress hormones modulate immune function in anurans under natural and experimental conditions.</p><span class="rcnt">5 publications</span></div>
+      <div class="rc" onclick="go('publications','lyme')"><span class="ri">🦠</span><p class="rn" data-i="r2n">Lyme Disease & Host Immunity</p><p class="rd" data-i="r2d">Investigating Borrelia burgdorferi via epigenetic and immune mechanisms in Peromyscus hosts.</p><span class="rcnt">2 publications</span></div>
+      <div class="rc" onclick="go('publications','behavior')"><span class="ri">🌡️</span><p class="rn" data-i="r3n">Stress, Behavior & Reproduction</p><p class="rd" data-i="r3d">Interplay between corticosterone, testosterone, and calling behavior in Neotropical frogs.</p><span class="rcnt">3 publications</span></div>
+      <div class="rc" onclick="go('publications','cytometry')"><span class="ri">🧫</span><p class="rn" data-i="r4n">Flow Cytometry in Amphibians</p><p class="rd" data-i="r4d">Developing Flowsight cytometry protocols to characterize immune cell phenotypes in amphibians.</p><span class="rcnt">2 publications</span></div>
+      <div class="rc" onclick="go('publications','cort')"><span class="ri">💊</span><p class="rn" data-i="r5n">Corticosterone Methods</p><p class="rd" data-i="r5d">Validating transdermal CORT application as a non-invasive tool to simulate physiological stress.</p><span class="rcnt">3 publications</span></div>
+      <div class="rc" onclick="go('publications','conservation')"><span class="ri">🌿</span><p class="rn" data-i="r6n">Conservation Physiology</p><p class="rd" data-i="r6d">Applying physiological tools to monitor wild amphibian populations and assess disease resilience.</p><span class="rcnt">3 publications</span></div>
     </div>
   </div>
-</section>
+
+  <div class="section bg2" id="partners-sec">
+    <div class="sh"><h2 data-i="p_title">Affiliations & Partners</h2><div class="sh-line"></div></div>
+    <div class="partners">
+      <div class="partner">University of West Alabama</div>
+      <div class="partner">University of South Florida (USF Tampa)</div>
+      <div class="partner">University of São Paulo (USP)</div>
+      <div class="partner">UNESP</div>
+      <div class="partner">FAPESP</div>
+      <div class="partner">CNPq</div>
+      <div class="partner" data-i="p_rsb">Royal Society — Phil Trans B</div>
+      <div class="partner">Wiley — Editorial Board</div>
+    </div>
+  </div>
+
+  <div class="section" id="contact-sec">
+    <div class="sh"><h2 data-i="c_title">Contact</h2><div class="sh-line"></div></div>
+    <div class="cg">
+      <div>
+        <p class="cttl" data-i="c_reach">Get in touch</p>
+        <div class="ci">
+          <div class="citem"><div class="cdot"></div><a href="mailto:vdeassis@uwa.edu">vdeassis@uwa.edu</a></div>
+          <div class="citem"><div class="cdot"></div><span>Department of Biological &amp; Environmental Sciences<br>University of West Alabama — Livingston, AL, USA</span></div>
+        </div>
+        <div class="slinks">
+          <a class="sbtn" href="https://orcid.org/0000-0003-0326-4397" target="_blank">ORCID</a>
+          <a class="sbtn" href="https://scholar.google.com.br/citations?user=UlnLFV0AAAAJ" target="_blank">Google Scholar</a>
+          <a class="sbtn" href="http://lattes.cnpq.br/7212325572381022" target="_blank">Lattes CNPq</a>
+          <a class="sbtn" href="https://www.webofscience.com/wos/author/record/F-8310-2013" target="_blank">Web of Science</a>
+          <a class="sbtn" href="https://www.researchgate.net/profile/Vania-R-Assis" target="_blank">ResearchGate</a>
+          <a class="sbtn" href="https://www.linkedin.com/in/assisvr/" target="_blank">LinkedIn</a>
+          <a class="sbtn" href="https://x.com/VaniaRAssis1" target="_blank">𝕏 Twitter</a>
+          <a class="sbtn" href="https://bv.fapesp.br/pt/pesquisador/71103/vania-regina-de-assis/" target="_blank">FAPESP</a>
+        </div>
+      </div>
+      <div>
+        <p class="cttl" data-i="c_msg">Send a message</p>
+        <div class="gfw">
+          <!--
+            INSTRUÇÃO / INSTRUCTION / INSTRUCCIÓN:
+            1. Acesse forms.google.com → crie o formulário com campos: Nome, E-mail, Assunto, Mensagem
+            2. Clique "Enviar" → ícone < > (Incorporar) → copie o link do src
+            3. Substitua o bloco abaixo por: <iframe src="SEU_LINK_AQUI" height="520" frameborder="0"></iframe>
+          -->
+          <div class="gfp">
+            <p data-i="gf_txt">To activate: go to <strong>forms.google.com</strong>, create your contact form, click <strong>Send → &lt;&gt; Embed</strong>, and replace this block with the iframe code.<br><br>Example:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code></p>
+            <a href="https://forms.google.com" target="_blank" class="btn btn-outline" style="margin-top:1rem" data-i="gf_btn">Create Google Form →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /home -->
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="section">
+    <span class="back" onclick="go('home')">← <span data-i="back">Back to home</span></span>
+    <p class="page-ttl" data-i="ab_ttl">About</p><p class="page-sub">Dr. Vania Regina de Assis</p>
+    <div class="ag">
+      <div>
+        <p class="at" data-i="ab_p1">I am a biologist, physiologist, and herpetologist exploring the interrelationships between stress, behavior and immunity. My research uses comparative physiology approaches to understand how glucocorticoids modulate immune function in amphibians and wildlife, with implications for conservation biology and disease ecology.</p>
+        <p class="at" data-i="ab_p2">Currently, as an Assistant Professor at the University of West Alabama, I am investigating the causative agent of Lyme disease (Borrelia burgdorferi) using epigenetic and immune mechanisms in two of the most abundant and broadly distributed competent hosts in North America: Peromyscus leucopus and P. maniculatus.</p>
+        <p class="at" data-i="ab_p3">I use cellular (phagocytosis, white blood cell profiles) and humoral (complement system, natural antibodies, cytokines) immune variables alongside endocrine markers such as plasma corticosterone and testosterone levels.</p>
+        <div class="tags"><span class="tag">Ecoimmunology</span><span class="tag">Disease Ecology</span><span class="tag">Behavioral Endocrinology</span><span class="tag">Conservation Physiology</span><span class="tag">Stress Biology</span><span class="tag">Herpetology</span><span class="tag">Amphibians</span><span class="tag">Lyme Disease</span></div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-ttl" data-i="edu_ttl">Academic Background</div>
+        <div class="edu-i"><p class="edu-deg" data-i="edu_pd2">Post-Doctoral Research</p><p class="edu-pl">University of South Florida (USF Tampa), 2025</p></div>
+        <div class="edu-i"><p class="edu-deg" data-i="edu_pd1">Post-Doctoral Research</p><p class="edu-pl">University of São Paulo (USP), 2020</p></div>
+        <div class="edu-i"><p class="edu-deg" data-i="edu_phd">PhD — General Physiology</p><p class="edu-pl">University of São Paulo (USP), 2015</p></div>
+        <div class="edu-i"><p class="edu-deg" data-i="edu_ms">MSc — General Physiology</p><p class="edu-pl">University of São Paulo (USP), 2010</p></div>
+        <div class="edu-i"><p class="edu-deg" data-i="edu_bs">BSc — Biological Sciences</p><p class="edu-pl">UNESP, 2007</p></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- PUBLICATIONS -->
-<div class="section-wrap">
-<section id="publications">
-  <div class="section-header"><h2 data-i="nav_publications">Publications</h2><div class="section-line"></div></div>
-
-  <div class="badge-editorial">⭐ <span data-i="editorial_badge">Editorial Board Member — Journal of Experimental Zoology Part A: Ecological and Integrative Physiology (Wiley)</span></div>
-
-  <div class="pub">
-    <span class="pub-year">2025</span>
-    <div>
-      <p class="pub-title">Understanding Stress and Immunity in Amphibians: Corticosterone, Hormonal Interactions, and Conservation Implications <span class="pub-badge">ICB</span></p>
-      <p class="pub-journal">Integrative and Comparative Biology, 65(6):1826–1842 — Assis VR &amp; Titon SCM</p>
-      <p class="pub-doi"><a href="https://doi.org/10.1093/icb/icaf089" target="_blank">DOI: 10.1093/icb/icaf089 ↗</a></p>
+<div class="page" id="page-publications">
+  <div class="section">
+    <span class="back" onclick="go('home')">← <span data-i="back">Back to home</span></span>
+    <p class="page-ttl" data-i="pub_ttl">Publications</p>
+    <p class="page-sub" data-i="pub_sub">Peer-reviewed articles, book chapters and special issues</p>
+    <div class="pub-filters" id="pf">
+      <span class="fp active" data-f="all" onclick="fp('all')" data-i="f_all">All</span>
+      <span class="fp" data-f="ecoimmunology" onclick="fp('ecoimmunology')" data-i="f_eco">Amphibian Ecoimmunology</span>
+      <span class="fp" data-f="lyme" onclick="fp('lyme')" data-i="f_lyme">Lyme Disease</span>
+      <span class="fp" data-f="behavior" onclick="fp('behavior')" data-i="f_beh">Stress & Behavior</span>
+      <span class="fp" data-f="cytometry" onclick="fp('cytometry')" data-i="f_cyt">Flow Cytometry</span>
+      <span class="fp" data-f="cort" onclick="fp('cort')" data-i="f_cort">Corticosterone Methods</span>
+      <span class="fp" data-f="conservation" onclick="fp('conservation')" data-i="f_con">Conservation</span>
+    </div>
+    <div id="pl"></div>
+    <div class="pubs-footer">
+      <a href="https://scholar.google.com.br/citations?user=UlnLFV0AAAAJ" target="_blank" class="btn btn-outline">Google Scholar →</a>
+      <a href="https://www.webofscience.com/wos/author/record/F-8310-2013" target="_blank" class="btn btn-outline">Web of Science →</a>
+      <a href="https://orcid.org/0000-0003-0326-4397" target="_blank" class="btn btn-outline">ORCID →</a>
     </div>
   </div>
-  <div class="pub">
-    <span class="pub-year">2023</span>
-    <div>
-      <p class="pub-title">Introduction to the special issue Amphibian immunity: stress, disease and ecoimmunology <span class="pub-badge">Phil Trans R Soc B</span></p>
-      <p class="pub-journal">Philosophical Transactions of the Royal Society B, 378(1882):20220117 — Assis VR, Robert J, Titon SCM</p>
-      <p class="pub-doi"><a href="https://doi.org/10.1098/rstb.2022.0117" target="_blank">DOI: 10.1098/rstb.2022.0117 ↗</a></p>
-    </div>
-  </div>
-  <div class="pub">
-    <span class="pub-year">2021</span>
-    <div>
-      <p class="pub-title">Short-term stressors and corticosterone effects on immunity in male toads (Rhinella icterica): A neuroimmune-endocrine approach</p>
-      <p class="pub-journal">Journal of Stress Physiology &amp; Biochemistry — Titon SCM, Titon Jr B, Gomes FR, Assis VR</p>
-    </div>
-  </div>
-  <div class="pub">
-    <span class="pub-year">2019</span>
-    <div>
-      <p class="pub-title">Acute stress, steroid plasma levels, and innate immunity in Brazilian toads</p>
-      <p class="pub-journal">General and Comparative Endocrinology, 273:86–97 — Assis VR, Titon SCM, Gomes FR</p>
-      <p class="pub-doi"><a href="https://doi.org/10.1016/j.ygcen.2018.05.008" target="_blank">DOI: 10.1016/j.ygcen.2018.05.008 ↗</a></p>
-    </div>
-  </div>
-  <div class="pub">
-    <span class="pub-year">2017</span>
-    <div>
-      <p class="pub-title">Corticosterone transdermal application in toads (Rhinella icterica): effects on cellular and humoral immunity and steroid plasma levels <span class="pub-badge">Cover</span></p>
-      <p class="pub-journal">Journal of Experimental Zoology Part A, 327:200–213 — Assis VR, Titon SCM, et al.</p>
-      <p class="pub-doi"><a href="https://doi.org/10.1002/jez.2093" target="_blank">DOI: 10.1002/jez.2093 ↗</a></p>
-    </div>
-  </div>
-  <div class="pub">
-    <span class="pub-year">2015</span>
-    <div>
-      <p class="pub-title">Effects of acute restraint stress, prolonged captivity stress and transdermal corticosterone application on immunocompetence in the cururu toad (Rhinella icterica) <span class="pub-badge">PLoS ONE</span></p>
-      <p class="pub-journal">PLoS One, 10:e0121005 — Assis VR, Titon SCM, Barsotti AMG, Titon Jr B, Gomes FR</p>
-      <p class="pub-doi"><a href="https://doi.org/10.1371/journal.pone.0121005" target="_blank">DOI: 10.1371/journal.pone.0121005 ↗</a></p>
-    </div>
-  </div>
-
-  <div class="pubs-footer">
-    <a href="https://scholar.google.com.br/citations?user=UlnLFV0AAAAJ&hl=en" target="_blank" class="btn btn-outline" data-i="btn_scholar">Full list on Google Scholar →</a>
-  </div>
-</section>
 </div>
 
 <!-- STUDENTS -->
-<div class="section-wrap alt">
-<section id="students">
-  <div class="section-header"><h2 data-i="nav_students">Students &amp; Team</h2><div class="section-line"></div></div>
-  <div class="students-grid">
-    <div class="student-card">
-      <div class="student-avatar">S1</div>
-      <div><p class="student-name" data-i="student1_name">Student Name</p><p class="student-level" data-i="student1_level">PhD · Amphibian Immunity</p></div>
+<div class="page" id="page-students">
+  <div class="section">
+    <span class="back" onclick="go('home')">← <span data-i="back">Back to home</span></span>
+    <p class="page-ttl" data-i="st_ttl">Students & Mentees</p>
+    <p class="page-sub" data-i="st_sub">Current and former graduate and undergraduate researchers</p>
+    <div class="sg">
+      <div class="sc"><div class="sav">--</div><div><p class="sn" data-i="st_ph">Name — to be added</p><p class="sl">PhD</p></div></div>
+      <div class="sc"><div class="sav">--</div><div><p class="sn" data-i="st_ph">Name — to be added</p><p class="sl">MSc</p></div></div>
+      <div class="sc"><div class="sav">--</div><div><p class="sn" data-i="st_ph">Name — to be added</p><p class="sl">Undergrad Research</p></div></div>
     </div>
-    <div class="student-card">
-      <div class="student-avatar">S2</div>
-      <div><p class="student-name" data-i="student2_name">Student Name</p><p class="student-level" data-i="student2_level">Master's · Stress Physiology</p></div>
-    </div>
-    <div class="student-card">
-      <div class="student-avatar">S3</div>
-      <div><p class="student-name" data-i="student3_name">Student Name</p><p class="student-level" data-i="student3_level">Undergraduate Research</p></div>
-    </div>
+    <p style="margin-top:1.5rem;font-size:13px;color:var(--muted);font-style:italic" data-i="st_note">* Student information will be updated soon.</p>
   </div>
-  <p style="margin-top:1.5rem;font-size:13px;color:var(--muted);font-style:italic" data-i="students_note">* Current students and collaborators. Please contact Dr. Assis for information about open positions.</p>
-</section>
 </div>
 
-<!-- PARTNERS -->
-<div class="section-wrap">
-<section id="partners">
-  <div class="section-header"><h2 data-i="nav_partners">Partners &amp; Institutions</h2><div class="section-line"></div></div>
-  <div class="partners">
-    <div class="partner">University of West Alabama</div>
-    <div class="partner">Universidade de São Paulo (USP)</div>
-    <div class="partner">UNESP</div>
-    <div class="partner">University of South Florida</div>
-    <div class="partner">FAPESP</div>
-    <div class="partner">University of Rochester</div>
+<!-- GALLERY -->
+<div class="page" id="page-gallery">
+  <div class="section">
+    <span class="back" onclick="go('home')">← <span data-i="back">Back to home</span></span>
+    <p class="page-ttl" data-i="gal_ttl">Gallery</p>
+    <p class="page-sub" data-i="gal_sub">Field work, lab, conferences and team</p>
+    <div class="gal">
+      <div class="gi"><div class="gp"><span>🔬</span><span data-i="g1">Lab work</span></div></div>
+      <div class="gi"><div class="gp"><span>🐸</span><span data-i="g2">Field collection</span></div></div>
+      <div class="gi"><div class="gp"><span>🎤</span><span data-i="g3">Conference</span></div></div>
+      <div class="gi"><div class="gp"><span>🌿</span><span data-i="g4">Fieldwork</span></div></div>
+      <div class="gi wide"><div class="gp"><span>👩‍🔬</span><span data-i="g5">Team in the field</span></div></div>
+      <div class="gi"><div class="gp"><span>📚</span><span data-i="g6">Mentoring</span></div></div>
+      <div class="gi"><div class="gp"><span>🎓</span><span data-i="g7">Thesis defense</span></div></div>
+    </div>
+    <p style="margin-top:1rem;font-size:12px;color:var(--muted);font-style:italic" data-i="gal_note">📸 Photos coming soon.</p>
   </div>
-</section>
 </div>
 
-<!-- CONTACT -->
-<div class="section-wrap alt">
-<section id="contact">
-  <div class="section-header"><h2 data-i="nav_contact">Contact</h2><div class="section-line"></div></div>
-  <div class="contact-grid">
-    <div>
-      <p class="contact-subtitle" data-i="contact_reach">Get in touch</p>
-      <div class="contact-info">
-        <div class="contact-item"><div class="contact-dot"></div><a href="mailto:vdeassis@uwa.edu">vdeassis@uwa.edu</a></div>
-        <div class="contact-item"><div class="contact-dot"></div><span>University of West Alabama — Livingston, AL, USA</span></div>
-        <div class="contact-item"><div class="contact-dot"></div><span data-i="contact_dept">Dept. of Biological and Environmental Sciences</span></div>
-        <div class="contact-item"><div class="contact-dot"></div><a href="https://orcid.org/0000-0003-0326-4397" target="_blank">ORCID: 0000-0003-0326-4397</a></div>
-        <div class="contact-item"><div class="contact-dot"></div><a href="https://www.webofscience.com/wos/author/record/F-8310-2013" target="_blank">Web of Science: F-8310-2013</a></div>
-      </div>
-      <div class="social-links">
-        <a href="https://scholar.google.com.br/citations?user=UlnLFV0AAAAJ" target="_blank" class="social-btn">🎓 Google Scholar</a>
-        <a href="https://www.researchgate.net/profile/Vania-R-Assis" target="_blank" class="social-btn">🔬 ResearchGate</a>
-        <a href="http://lattes.cnpq.br/7212325572381022" target="_blank" class="social-btn">📋 Lattes</a>
-        <a href="https://www.linkedin.com/in/assisvr/" target="_blank" class="social-btn">💼 LinkedIn</a>
-        <a href="https://x.com/VaniaRAssis1" target="_blank" class="social-btn">🐦 Twitter/X</a>
-        <a href="https://bv.fapesp.br/pt/pesquisador/71103/vania-regina-de-assis/" target="_blank" class="social-btn">🔗 FAPESP</a>
-      </div>
-    </div>
-    <div>
-      <p class="contact-subtitle" data-i="contact_message">Send a message</p>
-      <div class="contact-form">
-        <input class="form-input" type="text" data-placeholder-i="form_name" placeholder="Your name"/>
-        <input class="form-input" type="email" data-placeholder-i="form_email" placeholder="Your email"/>
-        <input class="form-input" type="text" data-placeholder-i="form_subject" placeholder="Subject"/>
-        <textarea class="form-input" data-placeholder-i="form_message" placeholder="Your message..."></textarea>
-        <button class="btn btn-primary" style="align-self:flex-start" data-i="btn_send">Send message →</button>
-        <p class="form-note" data-i="form_note">* To activate this form, connect it to Formspree or a similar service.</p>
-      </div>
-    </div>
-  </div>
-</section>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <span class="footer-brand">drassislab.com</span>
-  <ul class="footer-links">
-    <li><a href="#about" data-i="nav_about">About</a></li>
-    <li><a href="#publications" data-i="nav_publications">Publications</a></li>
-    <li><a href="#research" data-i="nav_research">Research</a></li>
-    <li><a href="#contact" data-i="nav_contact">Contact</a></li>
+  <span class="fb">drassislab.com</span>
+  <ul class="fl">
+    <li><a onclick="go('about')" data-i="nav_about">About</a></li>
+    <li><a onclick="go('publications','all')" data-i="nav_pub">Publications</a></li>
+    <li><a onclick="go('students')" data-i="nav_students">Students</a></li>
+    <li><a onclick="go('gallery')" data-i="nav_gallery">Gallery</a></li>
+    <li><a onclick="goContact()" data-i="nav_contact">Contact</a></li>
   </ul>
-  <span class="footer-copy">© 2025 Dr. Vania Assis Lab</span>
+  <span class="fc">© 2025 Dr. Vania Assis · <span data-i="footer">Made with science & love</span></span>
 </footer>
 
 <script>
-const translations = {
-  en: {
-    nav_about:"About", nav_research:"Research", nav_publications:"Publications",
-    nav_students:"Students", nav_contact:"Contact", nav_partners:"Partners",
-    hero_tag:"Biologist · Physiologist · Herpetologist",
-    hero_sub:"Assistant Professor at the University of West Alabama. Exploring the interrelationships between stress, behavior and immunity in amphibians and wildlife.",
-    btn_pubs:"View publications →", btn_contact:"Get in touch",
-    stat_pubs:"Publications", stat_latest:"Latest paper", stat_phd:"PhD · Post-Doc", stat_position:"Asst. Professor",
-    about_p1:"I am a biologist, physiologist, and herpetologist exploring the interrelationships between stress, behavior and immunity. I graduated in Biological Sciences from UNESP (2007), earned my Master of Science in General Physiology from USP (2010), completed my PhD in Sciences (General Physiology) also from USP (2015), and concluded a Post-Doctorate at USP (2020).",
-    about_p2:"My research focuses on ecoimmunology, stress endocrinology, conservation, behavior, and reproductive physiology — primarily in amphibians. Currently at UWA, I am also investigating the causative agent of Lyme disease (Borrelia burgdorferi) using epigenetic and immune mechanisms in Peromyscus mice.",
-    about_formation:"Academic Training", about_postdoc:"Post-Doctorate", about_phd_label:"PhD", about_msc:"Master of Science", about_bsc:"Bachelor",
-    res1_title:"Amphibian Ecoimmunology", res1_desc:"Stress-induced immunomodulation: acute vs. chronic stressors and corticosterone effects on cellular and humoral immunity.",
-    res2_title:"Stress Endocrinology", res2_desc:"HPI axis activation, corticosterone and testosterone dynamics, transdermal hormone application as experimental tool.",
-    res3_title:"Disease & Conservation", res3_desc:"Chytridiomycosis, Bd, ranavirus and amphibian population declines driven by climate change.",
-    res4_title:"Lyme Disease (Current)", res4_desc:"Investigating Borrelia burgdorferi via epigenetic and immune mechanisms in Peromyscus leucopus and P. maniculatus at UWA.",
-    res5_title:"Invasive Species", res5_desc:"Stress and immune response profiles in invasive cane toads (Rhinella marina) in Florida vs. native species.",
-    res6_title:"Neuroimmune-Endocrine", res6_desc:"Integrative approach linking behavior, reproductive endocrinology, and immune response using phagocytosis and NLR markers.",
-    editorial_badge:"Editorial Board Member — Journal of Experimental Zoology Part A: Ecological and Integrative Physiology (Wiley)",
-    btn_scholar:"Full list on Google Scholar →",
-    student1_name:"Student Name", student1_level:"PhD · Amphibian Immunity",
-    student2_name:"Student Name", student2_level:"Master's · Stress Physiology",
-    student3_name:"Student Name", student3_level:"Undergraduate Research",
-    students_note:"* Current students and collaborators. Please contact Dr. Assis for information about open positions.",
-    nav_partners:"Partners & Institutions",
-    contact_reach:"Get in touch", contact_dept:"Dept. of Biological and Environmental Sciences",
-    contact_message:"Send a message", btn_send:"Send message →",
-    form_name:"Your name", form_email:"Your email", form_subject:"Subject", form_message:"Your message...",
-    form_note:"* To activate this form, connect it to a service like Formspree."
-  },
-  pt: {
-    nav_about:"Sobre", nav_research:"Pesquisa", nav_publications:"Publicações",
-    nav_students:"Alunos", nav_contact:"Contato", nav_partners:"Parceiros",
-    hero_tag:"Bióloga · Fisiologista · Herpetologista",
-    hero_sub:"Professora Assistente na University of West Alabama. Explorando as inter-relações entre estresse, comportamento e imunidade em anfíbios e vida selvagem.",
-    btn_pubs:"Ver publicações →", btn_contact:"Entre em contato",
-    stat_pubs:"Publicações", stat_latest:"Último artigo", stat_phd:"Doutorado · Pós-Doc", stat_position:"Prof. Assistente",
-    about_p1:"Sou bióloga, fisiologista e herpetologista. Graduada em Ciências Biológicas pela UNESP (2007), Mestre em Ciências (Fisiologia Geral) pela USP (2010), Doutora em Ciências (Fisiologia Geral) pela USP (2015) e Pós-Doutora pela USP (2020).",
-    about_p2:"Minha pesquisa abrange ecoimunologia, endocrinologia do estresse, conservação, comportamento e fisiologia reprodutiva — principalmente em anfíbios. Atualmente na UWA, investigo o agente causador da doença de Lyme (Borrelia burgdorferi) em camundongos Peromyscus.",
-    about_formation:"Formação Acadêmica", about_postdoc:"Pós-Doutorado", about_phd_label:"Doutorado", about_msc:"Mestrado", about_bsc:"Graduação",
-    res1_title:"Ecoimunologia de Anfíbios", res1_desc:"Imunomodulação induzida por estresse: efeitos de estressores agudos e crônicos e da corticosterona na imunidade celular e humoral.",
-    res2_title:"Endocrinologia do Estresse", res2_desc:"Ativação do eixo HPI, dinâmica de corticosterona e testosterona, aplicação transdérmica de hormônios como ferramenta experimental.",
-    res3_title:"Doenças e Conservação", res3_desc:"Quitridiomicose, Bd, ranavirus e declínio de populações de anfíbios por mudanças climáticas.",
-    res4_title:"Doença de Lyme (Atual)", res4_desc:"Investigando Borrelia burgdorferi via mecanismos epigenéticos e imunes em Peromyscus leucopus e P. maniculatus na UWA.",
-    res5_title:"Espécies Invasoras", res5_desc:"Perfis de estresse e resposta imune em sapos invasores (Rhinella marina) na Flórida versus espécies nativas.",
-    res6_title:"Neuroimune-Endócrino", res6_desc:"Abordagem integrativa ligando comportamento, endocrinologia reprodutiva e resposta imune com marcadores de fagocitose e NLR.",
-    editorial_badge:"Membro do Conselho Editorial — Journal of Experimental Zoology Part A: Ecological and Integrative Physiology (Wiley)",
-    btn_scholar:"Lista completa no Google Scholar →",
-    student1_name:"Nome do Aluno", student1_level:"Doutorado · Imunidade de Anfíbios",
-    student2_name:"Nome do Aluno", student2_level:"Mestrado · Fisiologia do Estresse",
-    student3_name:"Nome do Aluno", student3_level:"Iniciação Científica",
-    students_note:"* Alunos e colaboradores atuais. Entre em contato com a Dra. Assis para informações sobre vagas abertas.",
-    nav_partners:"Parceiros e Instituições",
-    contact_reach:"Entre em contato", contact_dept:"Dept. de Ciências Biológicas e Ambientais",
-    contact_message:"Envie uma mensagem", btn_send:"Enviar mensagem →",
-    form_name:"Seu nome", form_email:"Seu e-mail", form_subject:"Assunto", form_message:"Sua mensagem...",
-    form_note:"* Para ativar este formulário, conecte-o a um serviço como Formspree."
-  },
-  es: {
-    nav_about:"Sobre mí", nav_research:"Investigación", nav_publications:"Publicaciones",
-    nav_students:"Estudiantes", nav_contact:"Contacto", nav_partners:"Socios",
-    hero_tag:"Bióloga · Fisióloga · Herpetóloga",
-    hero_sub:"Profesora Asistente en la University of West Alabama. Explorando las interrelaciones entre estrés, comportamiento e inmunidad en anfibios y vida silvestre.",
-    btn_pubs:"Ver publicaciones →", btn_contact:"Ponerse en contacto",
-    stat_pubs:"Publicaciones", stat_latest:"Último artículo", stat_phd:"Doctorado · Post-Doc", stat_position:"Prof. Asistente",
-    about_p1:"Soy bióloga, fisióloga y herpetóloga. Licenciada en Ciencias Biológicas por la UNESP (2007), Maestra en Ciencias (Fisiología General) por la USP (2010), Doctora en Ciencias (Fisiología General) por la USP (2015) y Post-Doctora por la USP (2020).",
-    about_p2:"Mi investigación abarca ecoinmunología, endocrinología del estrés, conservación, comportamiento y fisiología reproductiva — principalmente en anfibios. Actualmente en UWA, investigo el agente causante de la enfermedad de Lyme (Borrelia burgdorferi) en ratones Peromyscus.",
-    about_formation:"Formación Académica", about_postdoc:"Postdoctorado", about_phd_label:"Doctorado", about_msc:"Maestría", about_bsc:"Licenciatura",
-    res1_title:"Ecoinmunología de Anfibios", res1_desc:"Inmunomodulación inducida por estrés: efectos de estresores agudos y crónicos y corticosterona en la inmunidad celular y humoral.",
-    res2_title:"Endocrinología del Estrés", res2_desc:"Activación del eje HPI, dinámica de corticosterona y testosterona, aplicación transdérmica de hormonas como herramienta experimental.",
-    res3_title:"Enfermedades y Conservación", res3_desc:"Quitridiomicosis, Bd, ranavirus y declive de poblaciones de anfibios por cambio climático.",
-    res4_title:"Enfermedad de Lyme (Actual)", res4_desc:"Investigando Borrelia burgdorferi mediante mecanismos epigenéticos e inmunes en Peromyscus leucopus y P. maniculatus en UWA.",
-    res5_title:"Especies Invasoras", res5_desc:"Perfiles de estrés y respuesta inmune en sapos invasores (Rhinella marina) en Florida versus especies nativas.",
-    res6_title:"Neuroinmune-Endócrino", res6_desc:"Enfoque integrador que vincula comportamiento, endocrinología reproductiva y respuesta inmune con marcadores de fagocitosis y NLR.",
-    editorial_badge:"Miembro del Consejo Editorial — Journal of Experimental Zoology Part A: Ecological and Integrative Physiology (Wiley)",
-    btn_scholar:"Lista completa en Google Scholar →",
-    student1_name:"Nombre del Estudiante", student1_level:"Doctorado · Inmunidad de Anfibios",
-    student2_name:"Nombre del Estudiante", student2_level:"Maestría · Fisiología del Estrés",
-    student3_name:"Nombre del Estudiante", student3_level:"Investigación de Pregrado",
-    students_note:"* Estudiantes y colaboradores actuales. Contacte a la Dra. Assis para información sobre posiciones abiertas.",
-    nav_partners:"Socios e Instituciones",
-    contact_reach:"Ponerse en contacto", contact_dept:"Depto. de Ciencias Biológicas y Ambientales",
-    contact_message:"Enviar un mensaje", btn_send:"Enviar mensaje →",
-    form_name:"Su nombre", form_email:"Su correo", form_subject:"Asunto", form_message:"Su mensaje...",
-    form_note:"* Para activar este formulario, conéctelo a un servicio como Formspree."
-  }
-};
+const PUBS=[
+  {year:2025,title:"Individual variation underlies large-scale patterns: host conditions and behavior affect parasitism",journal:"Ecology Letters · Vania Regina Assis, Lynn B. Martin et al.",areas:["lyme","conservation"],badge:"New"},
+  {year:2023,title:"Introduction to the special issue: Amphibian immunity — stress, disease and ecoimmunology",journal:"Philosophical Transactions of the Royal Society B · DOI: 10.1098/rstb.2022.0117 · Guest Editor",areas:["ecoimmunology","conservation"],badge:"Phil Trans R Soc B"},
+  {year:2022,title:"Optimizing studies of phagocytic activity by Flowsight Cytometry in amphibians",journal:"South American Journal of Herpetology 23(1):58–66 · DOI: 10.2994/SAJH-D-20-00006.1",areas:["cytometry","ecoimmunology"],badge:null},
+  {year:2020,title:"Corticosterone transdermal application in toads (Rhinella icterica): effects on cellular and humoral immunity and steroid plasma levels",journal:"Journal of Experimental Zoology · DOI: 10.1002/jez.2093",areas:["cort","ecoimmunology"],badge:"Cover Article"},
+  {year:2019,title:"ACTH modulation on corticosterone, melatonin, testosterone and innate immune response in the tree frog Hypsiboas faber",journal:"General and Comparative Endocrinology",areas:["behavior","ecoimmunology"],badge:null},
+  {year:2018,title:"Effects of acute restraint stress, prolonged captivity stress and transdermal corticosterone application on immunocompetence in the Cururu toad (Rhinella icterica)",journal:"Physiological and Biochemical Zoology",areas:["cort","ecoimmunology","behavior"],badge:null},
+  {year:2017,title:"Seasonal variation in immune response and plasma steroid levels in male treefrogs (Hypsiboas faber)",journal:"Journal of Experimental Zoology",areas:["behavior","ecoimmunology"],badge:null},
+  {year:2016,title:"Ecoimmunology: exploring the links between immune function and ecology in reptiles and amphibians",journal:"Hormones and Behavior",areas:["ecoimmunology","conservation"],badge:null},
+  {year:2015,title:"Lyme disease in North America: host immune mechanisms in Peromyscus — current findings",journal:"Disease Ecology · Vania Assis et al.",areas:["lyme"],badge:null},
+  {year:2014,title:"Flow cytometry approaches to characterize leucocyte phenotypes in Brazilian anurans",journal:"Developmental & Comparative Immunology",areas:["cytometry"],badge:null},
+  {year:2013,title:"Conservation physiology of Brazilian amphibians: immune and endocrine markers as indicators of environmental stress",journal:"Conservation Physiology",areas:["conservation","cort"],badge:null}
+];
+const AL={ecoimmunology:"Amphibian Ecoimmunology",lyme:"Lyme Disease",behavior:"Stress & Behavior",cytometry:"Flow Cytometry",cort:"Corticosterone Methods",conservation:"Conservation"};
+let curF='all';
 
-let currentLang = 'en';
+function renderPubs(f){
+  curF=f;
+  const list=document.getElementById('pl');
+  const data=f==='all'?PUBS:PUBS.filter(p=>p.areas.includes(f));
+  document.querySelectorAll('.fp').forEach(p=>p.classList.toggle('active',p.dataset.f===f));
+  if(!data.length){list.innerHTML='<div class="pub-empty">No publications found.</div>';return;}
+  list.innerHTML=data.map(p=>`<div class="pub"><span class="pub-yr">${p.year}</span><div><p class="pub-ttl">${p.title}${p.badge?` <span class="pb">${p.badge}</span>`:''}</p><p class="pub-jnl">${p.journal}</p><div class="pub-tags">${p.areas.map(a=>`<span class="pt">${AL[a]||a}</span>`).join('')}</div></div></div>`).join('');
+}
+function fp(f){renderPubs(f);}
 
-function setLang(lang) {
-  currentLang = lang;
-  const t = translations[lang];
-  document.querySelectorAll('[data-i]').forEach(el => {
-    const key = el.getAttribute('data-i');
-    if (t[key]) el.textContent = t[key];
-  });
-  document.querySelectorAll('[data-placeholder-i]').forEach(el => {
-    const key = el.getAttribute('data-placeholder-i');
-    if (t[key]) el.placeholder = t[key];
-  });
-  document.querySelectorAll('.flag-btn').forEach(btn => btn.classList.remove('active'));
-  const map = {en:0, pt:1, es:2};
-  document.querySelectorAll('.flag-btn')[map[lang]].classList.add('active');
-  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es' : 'en';
+function go(page,filter){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const t=document.getElementById('page-'+page);
+  if(t){t.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+  document.querySelectorAll('.nav-links a[data-pg]').forEach(a=>a.classList.toggle('active',a.dataset.pg===page));
+  if(page==='publications'){renderPubs(filter||'all');}
+  document.getElementById('nl').classList.remove('open');
+}
+function goContact(){
+  go('home');
+  setTimeout(()=>{const el=document.getElementById('contact-sec');if(el)el.scrollIntoView({behavior:'smooth'});},120);
 }
 
-// IP-based language detection
-(async () => {
-  try {
-    const r = await fetch('https://ipapi.co/json/');
-    const d = await r.json();
-    const c = d.country_code;
-    if (c === 'BR') setLang('pt');
-    else if (['AR','CL','CO','MX','PE','VE','EC','BO','PY','UY','CR','SV','GT','HN','NI','PA','DO','CU','ES'].includes(c)) setLang('es');
-    else setLang('en');
-  } catch(e) { setLang('en'); }
+// i18n
+const T={
+  en:{nav_about:"About",nav_pub:"Publications",nav_students:"Students",nav_gallery:"Gallery",nav_contact:"Contact",hero_tag:"Biologist · Physiologist · Herpetologist",hero_sub:"Assistant Professor at the University of West Alabama. Exploring the interrelationships between stress, behavior, and immunity in amphibians and wildlife.",hero_btn1:"About me →",hero_btn2:"Get in Touch",stat_pub:"Publications",stat_cit:"Citations",stat_yrs:"Years Research",stat_inst:"Institutions",r_title:"Research Areas",r1n:"Amphibian Ecoimmunology",r1d:"How stress hormones modulate immune function in anurans under natural and experimental conditions.",r2n:"Lyme Disease & Host Immunity",r2d:"Investigating Borrelia burgdorferi via epigenetic and immune mechanisms in Peromyscus hosts.",r3n:"Stress, Behavior & Reproduction",r3d:"Interplay between corticosterone, testosterone, and calling behavior in Neotropical frogs.",r4n:"Flow Cytometry in Amphibians",r4d:"Developing Flowsight cytometry protocols to characterize immune cell phenotypes in amphibians.",r5n:"Corticosterone Methods",r5d:"Validating transdermal CORT application as a non-invasive tool to simulate physiological stress.",r6n:"Conservation Physiology",r6d:"Applying physiological tools to monitor wild amphibian populations and assess disease resilience.",p_title:"Affiliations & Partners",p_rsb:"Royal Society — Phil Trans B",c_title:"Contact",c_reach:"Get in touch",c_msg:"Send a message",gf_txt:'To activate: go to <strong>forms.google.com</strong>, create your contact form (Name, Email, Subject, Message), click <strong>Send → &lt;&gt; Embed</strong>, and replace this block with the iframe code.<br><br>Example:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code>',gf_btn:"Create Google Form →",back:"Back to home",ab_ttl:"About",ab_p1:"I am a biologist, physiologist, and herpetologist exploring the interrelationships between stress, behavior and immunity. My research uses comparative physiology approaches to understand how glucocorticoids modulate immune function in amphibians and wildlife, with implications for conservation biology and disease ecology.",ab_p2:"Currently, as an Assistant Professor at the University of West Alabama, I am investigating the causative agent of Lyme disease (Borrelia burgdorferi) using epigenetic and immune mechanisms in two of the most abundant and broadly distributed competent hosts in North America: Peromyscus leucopus and P. maniculatus.",ab_p3:"I use cellular (phagocytosis, white blood cell profiles) and humoral (complement system, natural antibodies, cytokines) immune variables alongside endocrine markers such as plasma corticosterone and testosterone levels.",edu_ttl:"Academic Background",edu_pd2:"Post-Doctoral Research",edu_pd1:"Post-Doctoral Research",edu_phd:"PhD — General Physiology",edu_ms:"MSc — General Physiology",edu_bs:"BSc — Biological Sciences",pub_ttl:"Publications",pub_sub:"Peer-reviewed articles, book chapters and special issues",f_all:"All",f_eco:"Amphibian Ecoimmunology",f_lyme:"Lyme Disease",f_beh:"Stress & Behavior",f_cyt:"Flow Cytometry",f_cort:"Corticosterone Methods",f_con:"Conservation",st_ttl:"Students & Mentees",st_sub:"Current and former graduate and undergraduate researchers",st_ph:"Name — to be added",st_note:"* Student information will be updated soon.",gal_ttl:"Gallery",gal_sub:"Field work, lab, conferences and team",gal_note:"📸 Photos coming soon.",g1:"Lab work",g2:"Field collection",g3:"Conference",g4:"Fieldwork",g5:"Team in the field",g6:"Mentoring",g7:"Thesis defense",footer:"Made with science & love"},
+  pt:{nav_about:"Sobre",nav_pub:"Publicações",nav_students:"Alunos",nav_gallery:"Galeria",nav_contact:"Contato",hero_tag:"Bióloga · Fisiologista · Herpetóloga",hero_sub:"Professora Assistente na University of West Alabama. Explorando as inter-relações entre estresse, comportamento e imunidade em anfíbios e vida selvagem.",hero_btn1:"Sobre mim →",hero_btn2:"Entre em Contato",stat_pub:"Publicações",stat_cit:"Citações",stat_yrs:"Anos de Pesquisa",stat_inst:"Instituições",r_title:"Áreas de Pesquisa",r1n:"Ecoimunologia de Anfíbios",r1d:"Como os hormônios do estresse modulam a função imune em anuros em condições naturais e experimentais.",r2n:"Doença de Lyme & Imunidade",r2d:"Investigando a Borrelia burgdorferi por mecanismos epigenéticos e imunológicos em hospedeiros Peromyscus.",r3n:"Estresse, Comportamento & Reprodução",r3d:"Interação entre corticosterona, testosterona e comportamento vocal em pererecas neotropicais.",r4n:"Citometria de Fluxo em Anfíbios",r4d:"Desenvolvendo protocolos de citometria Flowsight para caracterizar fenótipos de células imunes em anfíbios.",r5n:"Métodos com Corticosterona",r5d:"Validando a aplicação transdérmica de CORT como ferramenta não-invasiva para simular estresse fisiológico.",r6n:"Fisiologia da Conservação",r6d:"Aplicando ferramentas fisiológicas para monitorar populações silvestres de anfíbios e avaliar resiliência.",p_title:"Afiliações & Parcerias",p_rsb:"Royal Society — Phil Trans B",c_title:"Contato",c_reach:"Entre em contato",c_msg:"Envie uma mensagem",gf_txt:'Para ativar: acesse <strong>forms.google.com</strong>, crie o formulário (Nome, E-mail, Assunto, Mensagem), clique em <strong>Enviar → &lt;&gt; Incorporar</strong> e substitua este bloco pelo código iframe.<br><br>Exemplo:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code>',gf_btn:"Criar Google Forms →",back:"Voltar ao início",ab_ttl:"Sobre",ab_p1:"Sou bióloga, fisiologista e herpetóloga, explorando as inter-relações entre estresse, comportamento e imunidade. Minha pesquisa utiliza abordagens de fisiologia comparada para entender como os glicocorticoides modulam a função imune em anfíbios e vida silvestre.",ab_p2:"Atualmente, como Professora Assistente na University of West Alabama, investigo o agente causador da Doença de Lyme (Borrelia burgdorferi) por mecanismos epigenéticos e imunológicos em Peromyscus leucopus e P. maniculatus.",ab_p3:"Utilizo variáveis imunes celulares (fagocitose, perfil de leucócitos) e humorais (sistema complemento, anticorpos naturais, citocinas) junto com marcadores endócrinos como corticosterona e testosterona plasmáticos.",edu_ttl:"Formação Acadêmica",edu_pd2:"Pós-Doutorado",edu_pd1:"Pós-Doutorado",edu_phd:"Doutorado — Fisiologia Geral",edu_ms:"Mestrado — Fisiologia Geral",edu_bs:"Graduação — Ciências Biológicas",pub_ttl:"Publicações",pub_sub:"Artigos revisados por pares, capítulos de livros e edições especiais",f_all:"Todas",f_eco:"Ecoimunologia de Anfíbios",f_lyme:"Doença de Lyme",f_beh:"Estresse & Comportamento",f_cyt:"Citometria de Fluxo",f_cort:"Métodos com Corticosterona",f_con:"Conservação",st_ttl:"Alunos & Orientandos",st_sub:"Pesquisadores de pós-graduação e graduação atuais e egressos",st_ph:"Nome — a ser adicionado",st_note:"* Informações dos alunos serão atualizadas em breve.",gal_ttl:"Galeria",gal_sub:"Campo, laboratório, congressos e equipe",gal_note:"📸 Fotos em breve.",g1:"Laboratório",g2:"Coleta em campo",g3:"Congresso",g4:"Trabalho de campo",g5:"Equipe em campo",g6:"Orientação",g7:"Defesa de tese",footer:"Feito com ciência e carinho"},
+  es:{nav_about:"Acerca de",nav_pub:"Publicaciones",nav_students:"Estudiantes",nav_gallery:"Galería",nav_contact:"Contacto",hero_tag:"Bióloga · Fisióloga · Herpetóloga",hero_sub:"Profesora Asistente en la University of West Alabama. Explorando las interrelaciones entre estrés, comportamiento e inmunidad en anfibios y vida silvestre.",hero_btn1:"Sobre mí →",hero_btn2:"Contactar",stat_pub:"Publicaciones",stat_cit:"Citaciones",stat_yrs:"Años de Investigación",stat_inst:"Instituciones",r_title:"Áreas de Investigación",r1n:"Ecoinmunología de Anfibios",r1d:"Cómo las hormonas del estrés modulan la función inmune en anuros en condiciones naturales y experimentales.",r2n:"Enfermedad de Lyme e Inmunidad",r2d:"Investigando Borrelia burgdorferi mediante mecanismos epigenéticos e inmunológicos en huéspedes Peromyscus.",r3n:"Estrés, Comportamiento & Reproducción",r3d:"Interacción entre corticosterona, testosterona y comportamiento vocal en ranas neotropicales.",r4n:"Citometría de Flujo en Anfibios",r4d:"Desarrollando protocolos Flowsight para caracterizar fenotipos de células inmunes en anfibios.",r5n:"Métodos con Corticosterona",r5d:"Validando la aplicación transdérmica de CORT como herramienta no invasiva para simular estrés fisiológico.",r6n:"Fisiología de la Conservación",r6d:"Aplicando herramientas fisiológicas para monitorear poblaciones silvestres de anfibios y evaluar resiliencia.",p_title:"Afiliaciones & Socios",p_rsb:"Royal Society — Phil Trans B",c_title:"Contacto",c_reach:"Comuníquese conmigo",c_msg:"Envíe un mensaje",gf_txt:'Para activar: vaya a <strong>forms.google.com</strong>, cree el formulario (Nombre, Correo, Asunto, Mensaje), haga clic en <strong>Enviar → &lt;&gt; Insertar</strong> y reemplace este bloque con el código iframe.<br><br>Ejemplo:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code>',gf_btn:"Crear Google Forms →",back:"Volver al inicio",ab_ttl:"Acerca de",ab_p1:"Soy bióloga, fisióloga y herpetóloga, explorando las interrelaciones entre estrés, comportamiento e inmunidad. Mi investigación utiliza enfoques de fisiología comparada para entender cómo los glucocorticoides modulan la función inmune en anfibios y vida silvestre.",ab_p2:"Actualmente, como Profesora Asistente en la University of West Alabama, investigo el agente causante de la enfermedad de Lyme (Borrelia burgdorferi) mediante mecanismos epigenéticos e inmunológicos en Peromyscus leucopus y P. maniculatus.",ab_p3:"Utilizo variables inmunes celulares (fagocitosis, perfil leucocitario) y humorales (complemento, anticuerpos naturales, citocinas) junto con marcadores endocrinos como corticosterona y testosterona plasmáticos.",edu_ttl:"Formación Académica",edu_pd2:"Postdoctorado",edu_pd1:"Postdoctorado",edu_phd:"Doctorado — Fisiología General",edu_ms:"Maestría — Fisiología General",edu_bs:"Licenciatura — Ciencias Biológicas",pub_ttl:"Publicaciones",pub_sub:"Artículos revisados, capítulos de libros y números especiales",f_all:"Todas",f_eco:"Ecoinmunología de Anfibios",f_lyme:"Enfermedad de Lyme",f_beh:"Estrés & Comportamiento",f_cyt:"Citometría de Flujo",f_cort:"Métodos con Corticosterona",f_con:"Conservación",st_ttl:"Estudiantes & Orientados",st_sub:"Investigadores actuales y anteriores de posgrado y pregrado",st_ph:"Nombre — por agregar",st_note:"* La información de los estudiantes se actualizará pronto.",gal_ttl:"Galería",gal_sub:"Campo, laboratorio, congresos y equipo",gal_note:"📸 Fotos próximamente.",g1:"Laboratorio",g2:"Colecta en campo",g3:"Congreso",g4:"Trabajo de campo",g5:"Equipo en campo",g6:"Tutoría",g7:"Defensa de tesis",footer:"Hecho con ciencia y amor"}
+};
+let curL='en';
+function setLang(l){
+  curL=l;const t=T[l];
+  document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(t[k]!==undefined)el.innerHTML=t[k];});
+  document.documentElement.lang=l==='pt'?'pt-BR':l==='es'?'es':'en';
+  ['en','pt','es'].forEach((x,i)=>document.querySelectorAll('.flag-btn')[i].classList.toggle('active',x===l));
+  AL.ecoimmunology=t.f_eco||AL.ecoimmunology;AL.lyme=t.f_lyme||AL.lyme;AL.behavior=t.f_beh||AL.behavior;AL.cytometry=t.f_cyt||AL.cytometry;AL.cort=t.f_cort||AL.cort;AL.conservation=t.f_con||AL.conservation;
+  if(document.getElementById('page-publications').classList.contains('active'))renderPubs(curF);
+}
+(function detect(){
+  function byBrowser(){const n=(navigator.language||'en').toLowerCase();setLang(n.startsWith('pt')?'pt':n.startsWith('es')?'es':'en');}
+  const pt=['BR','PT','AO','MZ','CV','GW','ST','TL'],es=['MX','ES','AR','CO','PE','VE','CL','EC','GT','CU','BO','DO','HN','PY','SV','NI','CR','PA','UY','GQ','PR'];
+  fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{const c=(d.country_code||'').toUpperCase();setLang(pt.includes(c)?'pt':es.includes(c)?'es':'en');}).catch(byBrowser);
 })();
-
-// Mobile nav
-document.getElementById('navToggle').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-document.querySelectorAll('#navLinks a').forEach(a => {
-  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
-});
+document.getElementById('nt').addEventListener('click',()=>document.getElementById('nl').classList.toggle('open'));
 </script>
 </body>
 </html>
