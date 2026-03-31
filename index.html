@@ -524,31 +524,70 @@
     </div>
 
     <!-- MEDIA GALLERY - images & videos from img/CBC/ -->
+    <!-- MEDIA GALLERY -->
     <div class="sh" style="margin-top:2rem;"><h2 data-i="cbc_gallery">Gallery & Media</h2><div class="sh-line"></div></div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;" data-i="cbc_credit_note">📸 Photo and video credits are attributed to the respective photographers as indicated by folder names in the repository.</p>
 
-    <div class="cbc-gallery" id="cbcGallery">
-      <div class="cbc-gallery-loading" id="cbcLoading">
-        <span>🌿</span><p>Loading photos...</p>
+    <div class="cbc-contributor-block">
+      <div class="cbc-contributor-header">
+        <div class="cbc-contributor-avatar">JR</div>
+        <div>
+          <p class="cbc-contributor-name">📸 Jefferson Rondolfo</p>
+          <p class="cbc-contributor-label">13 photos · March 2026</p>
+        </div>
+      </div>
+      <div class="cbc-img-grid">
+        <div class="cbc-img-item cbc-media-wide" onclick="openLightbox(0)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307115905.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(1)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307173557.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(2)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307173608.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(3)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307173614.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(4)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307173631.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(5)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307173732.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(6)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307181404.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(7)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307181429.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(8)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307181514.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(9)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307181531.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(10)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307181545.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(11)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307182150.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
+        <div class="cbc-img-item" onclick="openLightbox(12)">
+          <img src="img/CBC/Jefferson Rondolfo/IMG20260307183122.jpg" alt="CBC - Jefferson Rondolfo" loading="lazy"/>
+        </div>
       </div>
     </div>
 
-    <!-- VIDEO EMBED SECTION -->
+    <!-- VIDEO SECTION -->
     <div class="sh" style="margin-top:2.5rem;"><h2 data-i="cbc_videos">Videos</h2><div class="sh-line"></div></div>
-    <div class="cbc-videos">
-      <!-- Add YouTube/Vimeo embeds here. Example:
-           <div class="cbc-video-wrap">
-             <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-             <p class="cbc-video-credit">Credit: Name / Institution</p>
-           </div>
-      -->
+    <div id="cbcVideoWrap">
       <div class="cbc-video-placeholder">
         <span>🎬</span>
         <p data-i="videos_coming">Videos coming soon. Add YouTube/Vimeo embed codes here.</p>
       </div>
     </div>
 
-    <!-- CBC QUICK FACTS -->
+        <!-- CBC QUICK FACTS -->
     <div class="sh" style="margin-top:2.5rem;"><h2 data-i="cbc_facts">Quick Facts</h2><div class="sh-line"></div></div>
     <div class="cbc-facts">
       <div class="cbc-fact"><span class="cbc-fact-num">2,100+</span><span class="cbc-fact-label" data-i="fact_acres">Acres</span></div>
@@ -709,7 +748,7 @@ function go(page,filter){
   if(t){t.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
   document.querySelectorAll('.nav-links a[data-pg]').forEach(a=>a.classList.toggle('active',a.dataset.pg===page));
   if(page==='publications'){renderPubs(filter||'all');}
-  if(page==='cbc'){setTimeout(loadCBCGallery,100);}
+
   document.getElementById('nl').classList.remove('open');
 }
 function goContact(){
@@ -870,126 +909,6 @@ async function submitForm(e){
 document.getElementById('nt').addEventListener('click',()=>document.getElementById('nl').classList.toggle('open'));
 
 // ── CBC DYNAMIC GALLERY ──
-const GITHUB_API = 'https://api.github.com/repos/rondolfo/drassislab/contents/img/CBC';
-const RAW_BASE   = 'https://raw.githubusercontent.com/rondolfo/drassislab/main/img/CBC';
-const IMG_EXTS   = ['jpg','jpeg','png','gif','webp'];
-const VID_EXTS   = ['mp4','mov','webm'];
-let lightboxImages = [];
-let lightboxIndex  = 0;
-
-function isImg(name){ return IMG_EXTS.some(e=>name.toLowerCase().endsWith('.'+e)); }
-function isVid(name){ return VID_EXTS.some(e=>name.toLowerCase().endsWith('.'+e)); }
-function initials(name){ return name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2); }
-
-async function loadCBCGallery(){
-  // Only load when CBC page is visible
-  if(!document.getElementById('page-cbc').classList.contains('active')) return;
-  const wrap = document.getElementById('cbcGalleryWrap');
-  const loading = document.getElementById('cbcLoading');
-  if(wrap.dataset.loaded) return; // avoid reloading
-
-  try {
-    // Get top-level CBC folder
-    const res  = await fetch(GITHUB_API);
-    const items = await res.json();
-
-    // Get subfolders (contributor folders) and top-level images
-    const folders    = items.filter(i=>i.type==='dir');
-    const rootImages = items.filter(i=>i.type==='file' && isImg(i.name) && !i.name.toUpperCase().includes('LOGO'));
-    const rootVideos = items.filter(i=>i.type==='file' && isVid(i.name));
-
-    loading.style.display = 'none';
-    lightboxImages = [];
-    let html = '';
-
-    // Root-level images (no specific contributor)
-    if(rootImages.length){
-      const imgs = rootImages.map(f=>({src: RAW_BASE+'/'+encodeURIComponent(f.name), name:f.name, credit:'Assis Lab'}));
-      lightboxImages.push(...imgs);
-      html += buildContributorBlock('Assis Lab', imgs, rootVideos, RAW_BASE);
-    }
-
-    // Per-contributor subfolders
-    for(const folder of folders){
-      const subRes   = await fetch(folder.url);
-      const subItems = await subRes.json();
-      if(!Array.isArray(subItems)) continue;
-      const subImgs = subItems.filter(i=>i.type==='file'&&isImg(i.name));
-      const subVids = subItems.filter(i=>i.type==='file'&&isVid(i.name));
-      if(!subImgs.length && !subVids.length) continue;
-      const credit = folder.name;
-      const base   = RAW_BASE + '/' + encodeURIComponent(folder.name);
-      const imgs   = subImgs.map(f=>({src: base+'/'+encodeURIComponent(f.name), name:f.name, credit}));
-      lightboxImages.push(...imgs);
-      html += buildContributorBlock(credit, imgs, subVids, base);
-    }
-
-    wrap.innerHTML = html || '<p style="color:var(--muted);font-style:italic;padding:1rem">No photos yet in this folder.</p>';
-    wrap.dataset.loaded = '1';
-
-    // Render videos in the video section
-    renderVideos(folders, rootVideos);
-
-  } catch(e){
-    loading.innerHTML = '<p style="color:var(--muted);font-style:italic">Could not load gallery. Please check your internet connection.</p>';
-  }
-}
-
-function buildContributorBlock(contributor, imgs, vids, base){
-  const av = initials(contributor);
-  let block = `
-    <div class="cbc-contributor-block">
-      <div class="cbc-contributor-header">
-        <div class="cbc-contributor-avatar">${av}</div>
-        <div>
-          <p class="cbc-contributor-name">📸 ${contributor}</p>
-          <p class="cbc-contributor-label">${imgs.length} photo${imgs.length!==1?'s':''}</p>
-        </div>
-      </div>
-      <div class="cbc-img-grid">`;
-  imgs.forEach((img, idx)=>{
-    const globalIdx = lightboxImages.findIndex(i=>i.src===img.src);
-    const wide = idx===0 ? ' wide' : '';
-    block += `<div class="cbc-img-item${wide}" onclick="openLightbox(${globalIdx})">
-      <img src="${img.src}" alt="${img.name}" loading="lazy"/>
-    </div>`;
-  });
-  block += `</div></div>`;
-  return block;
-}
-
-async function renderVideos(folders, rootVids){
-  const videoWrap = document.getElementById('cbcVideoWrap');
-  let videosHTML = '';
-  // root level videos
-  rootVids.forEach(v=>{
-    videosHTML += `<div class="cbc-video-item">
-      <video controls preload="metadata">
-        <source src="${RAW_BASE}/${encodeURIComponent(v.name)}" type="video/${v.name.split('.').pop().toLowerCase()}">
-      </video>
-      <div class="cbc-video-credit-bar">📹 Assis Lab · ${v.name}</div>
-    </div>`;
-  });
-  // subfolder videos
-  for(const folder of folders){
-    const subRes   = await fetch(folder.url);
-    const subItems = await subRes.json();
-    if(!Array.isArray(subItems)) continue;
-    const subVids = subItems.filter(i=>i.type==='file'&&isVid(i.name));
-    const base    = RAW_BASE + '/' + encodeURIComponent(folder.name);
-    subVids.forEach(v=>{
-      videosHTML += `<div class="cbc-video-item">
-        <video controls preload="metadata">
-          <source src="${base}/${encodeURIComponent(v.name)}" type="video/${v.name.split('.').pop().toLowerCase()}">
-        </video>
-        <div class="cbc-video-credit-bar">📹 ${folder.name} · ${v.name}</div>
-      </div>`;
-    });
-  }
-  if(videosHTML){
-    videoWrap.innerHTML = '<div class="cbc-videos">' + videosHTML + '</div>';
-  }
-}
 
 // ── LIGHTBOX ──
 function openLightbox(idx){
