@@ -64,11 +64,11 @@
     .stat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
     /* RESEARCH SECTION WITH LOGO WATERMARK */
     .research-section{position:relative;overflow:hidden}
-    .research-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:480px;height:480px;background:url('img/lablogo.jpeg') center/contain no-repeat;opacity:0.10;pointer-events:none;z-index:0}
+    .research-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:url('img/lablogo.jpeg') center/contain no-repeat;opacity:0.15;pointer-events:none;z-index:0}
     .research-section .sh,.research-section .rg{position:relative;z-index:1}
     /* RESEARCH CARDS */
     .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .rc{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:1.5rem;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+    .rc{background:rgba(255,255,255,0.55);backdrop-filter:blur(2px);border:1px solid rgba(26,107,60,0.15);border-radius:16px;padding:1.5rem;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden}
     .rc::after{content:'View publications →';position:absolute;bottom:1rem;right:1rem;font-size:11px;color:var(--green);opacity:0;transition:opacity .2s;font-weight:500}
     .rc:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,107,60,.1)}
     .rc:hover::after{opacity:1}
@@ -129,6 +129,18 @@
     .sbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--muted);transition:all .2s;font-weight:500}
     .sbtn:hover{border-color:var(--green);color:var(--green);background:var(--gl)}
     .gfw{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2);max-height:480px}
+    .contact-form{display:flex;flex-direction:column;gap:14px}
+    .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .cf-field{display:flex;flex-direction:column;gap:5px}
+    .cf-label{font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.3px}
+    .cf-input{padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
+    .cf-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(26,107,60,.08)}
+    .cf-textarea{resize:vertical;min-height:110px}
+    .cf-note{font-size:11px;color:var(--muted);font-style:italic;margin-top:2px}
+    .cf-status{font-size:13px;padding:10px 14px;border-radius:10px;display:none}
+    .cf-status.ok{display:block;background:#D1FAE5;color:#065F46}
+    .cf-status.err{display:block;background:#FEE2E2;color:#991B1B}
+    @media(max-width:600px){.cf-row{grid-template-columns:1fr}}
     .gfw iframe{width:100%;border:none;display:block}
     .gfp{padding:2rem;text-align:center}
     .gfp p{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.7}
@@ -139,18 +151,95 @@
     .fl{display:flex;gap:20px;list-style:none}
     .fl a{font-size:12px;color:rgba(255,255,255,.45);cursor:pointer;transition:color .2s}.fl a:hover{color:#fff}
     .fc{font-size:11px}
-    @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-vis{min-height:280px}.hero h1{font-size:36px}.hero-text{padding:2.5rem 1.5rem}.ag{grid-template-columns:1fr}.rg{grid-template-columns:repeat(2,1fr)}}
+    /* CBC LOADER */
+    .cbc-loader{width:32px;height:32px;border:3px solid var(--gm);border-top-color:var(--green);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto}
+    .cbc-contributor-block{margin-bottom:2.5rem}
+    .cbc-contributor-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding:10px 16px;background:var(--gl);border-radius:12px;border-left:4px solid var(--green)}
+    .cbc-contributor-avatar{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+    .cbc-contributor-name{font-size:14px;font-weight:500;color:var(--green)}
+    .cbc-contributor-label{font-size:11px;color:var(--muted)}
+    .cbc-img-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .cbc-img-item{aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--gm);cursor:pointer;position:relative;transition:transform .2s}
+    .cbc-img-item:hover{transform:scale(1.02)}
+    .cbc-img-item img{width:100%;height:100%;object-fit:cover;display:block}
+    .cbc-img-item.wide{grid-column:span 2;aspect-ratio:2/1}
+    .cbc-video-item{border-radius:14px;overflow:hidden;background:var(--bg2);border:1px solid var(--border)}
+    .cbc-video-item video{width:100%;display:block;border-radius:14px 14px 0 0}
+    .cbc-video-credit-bar{padding:8px 12px;font-size:11px;color:var(--muted);font-style:italic;border-top:1px solid var(--border)}
+    /* LIGHTBOX */
+    .lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:999;align-items:center;justify-content:center;flex-direction:column}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:90vw;max-height:80vh;border-radius:8px;object-fit:contain}
+    .lightbox-credit{color:rgba(255,255,255,.6);font-size:13px;margin-top:12px;font-style:italic}
+    .lightbox-close{position:absolute;top:20px;right:24px;color:#fff;font-size:28px;cursor:pointer;background:none;border:none;line-height:1}
+    .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;padding:12px 16px;cursor:pointer;border-radius:8px;backdrop-filter:blur(4px)}
+    .lightbox-prev{left:16px}.lightbox-next{right:16px}
+    /* PROJECTS PAGE */
+    .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .proj-card{border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;background:var(--bg)}
+    .proj-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,107,60,.12);border-color:var(--green)}
+    .proj-card-placeholder{cursor:default;opacity:.6}
+    .proj-card-placeholder:hover{transform:none;box-shadow:none;border-color:var(--border)}
+    .proj-card-img{height:200px;overflow:hidden;background:var(--gl);display:flex;align-items:center;justify-content:center;position:relative}
+    .proj-card-img img{width:100%;height:100%;object-fit:cover}
+    .proj-card-fallback{display:none;font-size:48px;align-items:center;justify-content:center;width:100%;height:100%}
+    .proj-placeholder-img{font-size:48px}
+    .proj-card-body{padding:1.5rem}
+    .proj-card-meta{display:flex;align-items:center;gap:10px;margin-bottom:.75rem}
+    .proj-year{font-size:12px;color:var(--muted);font-weight:500}
+    .proj-status-badge{font-size:10px;padding:2px 10px;border-radius:20px;background:var(--gl);color:var(--green);font-weight:500}
+    .proj-card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:.5rem}
+    .proj-card-desc{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+    .proj-read-more{font-size:13px;color:var(--green);font-weight:500}
+    /* CBC PAGE */
+    .cbc-header{display:flex;align-items:flex-start;gap:24px;margin-bottom:2rem;flex-wrap:wrap}
+    .cbc-logo-wrap{flex-shrink:0;width:120px;height:120px;background:var(--gl);border-radius:16px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid rgba(26,107,60,.15)}
+    .cbc-logo-wrap img{width:100%;height:100%;object-fit:contain;padding:8px}
+    .cbc-header-text{flex:1}
+    .cbc-about{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem}
+    .cbc-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .cbc-gallery-loading{grid-column:1/-1;padding:3rem;text-align:center;color:var(--muted)}
+    .cbc-gallery-loading span{font-size:32px;display:block;margin-bottom:.5rem}
+    .cbc-gallery-loading p{font-size:13px;font-style:italic}
+    .cbc-media-item{border-radius:12px;overflow:hidden;background:var(--gm);position:relative;cursor:pointer}
+    .cbc-media-item.ratio-1{aspect-ratio:1}
+    .cbc-media-item.ratio-wide{grid-column:span 2;aspect-ratio:2/1}
+    .cbc-media-item.ratio-video{aspect-ratio:16/9}
+    .cbc-media-wide{grid-column:span 2;aspect-ratio:2/1}
+    .cbc-media-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+    .cbc-media-item:hover img{transform:scale(1.04)}
+    .cbc-media-credit{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.6));color:#fff;font-size:10px;padding:20px 8px 6px;opacity:0;transition:opacity .25s;pointer-events:none}
+    .cbc-media-item:hover .cbc-media-credit{opacity:1}
+    .cbc-lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+    .cbc-lightbox.open{display:flex}
+    .cbc-lightbox img{max-width:90vw;max-height:80vh;border-radius:8px;object-fit:contain}
+    .cbc-lightbox-credit{color:rgba(255,255,255,.7);font-size:12px;text-align:center}
+    .cbc-lightbox-close{position:absolute;top:20px;right:24px;color:#fff;font-size:28px;cursor:pointer;background:none;border:none;line-height:1}
+    .cbc-videos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .cbc-video-wrap{border-radius:14px;overflow:hidden;background:#000}
+    .cbc-video-wrap iframe{width:100%;aspect-ratio:16/9;border:none;display:block}
+    .cbc-video-credit{font-size:11px;color:var(--muted);padding:6px 10px;font-style:italic}
+    .cbc-video-placeholder{grid-column:span 2;padding:2.5rem;text-align:center;border:1px dashed var(--border);border-radius:14px;color:var(--muted)}
+    .cbc-video-placeholder span{font-size:32px;display:block;margin-bottom:.5rem}
+    .cbc-video-placeholder p{font-size:13px;font-style:italic}
+    .cbc-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .cbc-fact{text-align:center;padding:1.25rem;border:1px solid var(--border);border-radius:14px;background:var(--gl)}
+    .cbc-fact-num{display:block;font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--green);margin-bottom:4px}
+    .cbc-fact-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+        @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-vis{min-height:280px}.hero h1{font-size:36px}.hero-text{padding:2.5rem 1.5rem}.ag{grid-template-columns:1fr}.rg{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:768px){nav{padding:1rem 1.25rem}.nav-links{display:none;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:1rem 1.5rem;gap:14px}.nav-links.open{display:flex}.nav-toggle{display:flex}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(3){border-top:1px solid var(--border)}.stat:nth-child(4){border-right:none;border-top:1px solid var(--border)}.section{padding:2.5rem 1.25rem}.rg{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr)}.sg{grid-template-columns:1fr 1fr}.cg{grid-template-columns:1fr;gap:2rem}footer{flex-direction:column;text-align:center}.fl{justify-content:center}}
-    @media(max-width:480px){.sg{grid-template-columns:1fr}}
+    @media(max-width:768px){.proj-grid{grid-template-columns:1fr}.cbc-img-grid{grid-template-columns:repeat(2,1fr)!important}.cbc-gallery{grid-template-columns:repeat(2,1fr)}.cbc-facts{grid-template-columns:repeat(2,1fr)}.cbc-videos{grid-template-columns:1fr}.cbc-video-placeholder{grid-column:span 1}.cbc-media-item.cbc-media-wide{grid-column:span 2}}
+    @media(max-width:480px){.sg{grid-template-columns:1fr}.cbc-facts{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
 <body>
 
 <nav>
-  <span class="nav-logo" onclick="go('home')"><img src="img/lablogo.jpeg" alt="Assis Lab" style="height:64px;width:64px;object-fit:contain;border-radius:10px;display:block;"/></span>
+  <span class="nav-logo" onclick="go('home')"><img src="img/lablogo.jpeg" alt="Assis Lab" style="height:72px;width:72px;object-fit:contain;border-radius:10px;display:block;"/></span>
   <ul class="nav-links" id="nl">
     <li><a onclick="go('about')" data-pg="about" data-i="nav_about">About</a></li>
     <li><a onclick="go('publications','all')" data-pg="publications" data-i="nav_pub">Publications</a></li>
+    <li><a onclick="go('projects')" data-pg="projects" data-i="nav_proj">Projects</a></li>
     <li><a onclick="go('students')" data-pg="students" data-i="nav_students">Students</a></li>
     <li><a onclick="go('gallery')" data-pg="gallery" data-i="nav_gallery">Gallery</a></li>
     <li><a onclick="goContact()" data-i="nav_contact">Contact</a></li>
@@ -249,7 +338,31 @@
       </div>
       <div>
         <p class="cttl" data-i="c_msg">Send a message</p>
-        <div class="gfw"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0CqQHv3V4KfQGRLztHVv7eWUEA_juWh_NjWjWlWYNoaC_VQ/viewform?embedded=true" width="100%" height="480" frameborder="0" marginheight="0" marginwidth="0" style="display:block;">Carregando…</iframe></div>
+        <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+          <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_KEY"/>
+          <input type="hidden" name="subject" value="New message — drassislab.com"/>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label class="cf-label" data-i18n-label="form_name">Name</label>
+              <input class="cf-input" type="text" name="name" required placeholder="" data-i18n-ph="form_name"/>
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" data-i18n-label="form_email">Email</label>
+              <input class="cf-input" type="email" name="email" required placeholder="" data-i18n-ph="form_email"/>
+            </div>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" data-i18n-label="form_subject">Subject</label>
+            <input class="cf-input" type="text" name="subject_line" required placeholder="" data-i18n-ph="form_subject"/>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" data-i18n-label="form_msg">Message</label>
+            <textarea class="cf-input cf-textarea" name="message" required rows="5" placeholder="" data-i18n-ph="form_msg"></textarea>
+          </div>
+          <div id="formStatus" class="cf-status"></div>
+          <button type="submit" class="btn btn-primary" id="formBtn" data-i="form_send">Send message →</button>
+          <p class="cf-note" data-i="form_note">Your message goes directly to Dr. Assis's inbox.</p>
+        </form>
       </div>
     </div>
   </div>
@@ -343,11 +456,126 @@
   </div>
 </div>
 
+<!-- PROJECTS LIST PAGE -->
+<div class="page" id="page-projects">
+  <div class="section">
+    <span class="back" onclick="go('home')">← <span data-i="back">Back to home</span></span>
+    <p class="page-ttl" data-i="proj_ttl">Projects</p>
+    <p class="page-sub" data-i="proj_sub">Research projects, field work and collaborations</p>
+    <div class="proj-grid">
+      <!-- CBC PROJECT CARD -->
+      <div class="proj-card" onclick="go('cbc')">
+        <div class="proj-card-img">
+          <img src="img/CBC/LOGOCAHABA.jpg" alt="Cahaba Biodiversity Center"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="proj-card-fallback">🌿</div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-meta">
+            <span class="proj-year">2025–present</span>
+            <span class="proj-status-badge" data-i="active_badge">Active</span>
+          </div>
+          <h3 class="proj-card-title">Cahaba Biodiversity Center</h3>
+          <p class="proj-card-desc" data-i="cbc_short">Field research and biodiversity studies at UWA's 2,100-acre natural reserve along the Cahaba River, Bibb County, Alabama.</p>
+          <span class="proj-read-more" data-i="read_more">View project →</span>
+        </div>
+      </div>
+      <!-- PLACEHOLDER FOR FUTURE PROJECTS -->
+      <div class="proj-card proj-card-placeholder">
+        <div class="proj-card-img proj-placeholder-img"><span>🔬</span></div>
+        <div class="proj-card-body">
+          <div class="proj-card-meta"><span class="proj-year">Coming soon</span></div>
+          <h3 class="proj-card-title" data-i="proj_coming">More projects coming soon</h3>
+          <p class="proj-card-desc" data-i="proj_coming_desc">Additional research projects will be added here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CBC DETAIL PAGE -->
+<div class="page" id="page-cbc">
+  <div class="section">
+    <span class="back" onclick="go('projects')">← <span data-i="back_proj">Back to projects</span></span>
+
+    <!-- CBC HEADER -->
+    <div class="cbc-header">
+      <div class="cbc-logo-wrap">
+        <img src="img/CBC/LOGOCAHABA.jpg" alt="Cahaba Biodiversity Center"
+             onerror="this.style.display='none'"/>
+      </div>
+      <div class="cbc-header-text">
+        <p class="page-ttl">Cahaba Biodiversity Center</p>
+        <p class="page-sub">University of West Alabama · Bibb County, Alabama</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:.5rem;">
+          <span class="tag">Conservation Biology</span>
+          <span class="tag">Biodiversity</span>
+          <span class="tag">Field Research</span>
+          <span class="tag">Cahaba River</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT CBC -->
+    <div class="cbc-about">
+      <p class="at" data-i="cbc_p1">The UWA Cahaba Biodiversity Center (CBC) is located on over 2,100 acres of pristine land in Bibb County, Alabama, with extensive frontage on the Cahaba River — one of the most biodiverse rivers in North America. The property was gifted to the University of West Alabama by landowner William D. "Bill" Hubbard, whose vision was to create a world-class outdoor classroom and research station for future generations of scientists.</p>
+      <p class="at" data-i="cbc_p2">Alabama ranks 4th in biodiversity among all U.S. states and 1st east of the Mississippi River, leading in freshwater fish, mussels, snails, turtles, and crayfish species. The CBC sits at a unique transition zone between the Appalachians and the Coastal Plain, creating an exceptional diversity of habitats — from limestone glades and sinkholes to hardwood forests and natural springs.</p>
+      <p class="at" data-i="cbc_p3">Dr. Vania Assis conducts field research at the CBC, integrating conservation physiology with the Center's mission to advance biodiversity research and education. The CBC serves as an outdoor laboratory for studying wildlife health, population ecology, and the interrelationships between amphibians and their environment.</p>
+    </div>
+
+    <!-- MEDIA GALLERY - images & videos from img/CBC/ -->
+    <div class="sh" style="margin-top:2rem;"><h2 data-i="cbc_gallery">Gallery & Media</h2><div class="sh-line"></div></div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;" data-i="cbc_credit_note">📸 Photo and video credits are attributed to the respective photographers as indicated by folder names in the repository.</p>
+
+    <div class="cbc-gallery" id="cbcGallery">
+      <div class="cbc-gallery-loading" id="cbcLoading">
+        <span>🌿</span><p>Loading photos...</p>
+      </div>
+    </div>
+
+    <!-- VIDEO EMBED SECTION -->
+    <div class="sh" style="margin-top:2.5rem;"><h2 data-i="cbc_videos">Videos</h2><div class="sh-line"></div></div>
+    <div class="cbc-videos">
+      <!-- Add YouTube/Vimeo embeds here. Example:
+           <div class="cbc-video-wrap">
+             <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+             <p class="cbc-video-credit">Credit: Name / Institution</p>
+           </div>
+      -->
+      <div class="cbc-video-placeholder">
+        <span>🎬</span>
+        <p data-i="videos_coming">Videos coming soon. Add YouTube/Vimeo embed codes here.</p>
+      </div>
+    </div>
+
+    <!-- CBC QUICK FACTS -->
+    <div class="sh" style="margin-top:2.5rem;"><h2 data-i="cbc_facts">Quick Facts</h2><div class="sh-line"></div></div>
+    <div class="cbc-facts">
+      <div class="cbc-fact"><span class="cbc-fact-num">2,100+</span><span class="cbc-fact-label" data-i="fact_acres">Acres</span></div>
+      <div class="cbc-fact"><span class="cbc-fact-num">4 mi</span><span class="cbc-fact-label" data-i="fact_river">River Frontage</span></div>
+      <div class="cbc-fact"><span class="cbc-fact-num">#1</span><span class="cbc-fact-label" data-i="fact_bio">Biodiversity E. of Mississippi</span></div>
+      <div class="cbc-fact"><span class="cbc-fact-num">600+</span><span class="cbc-fact-label" data-i="fact_visitors">Annual Visitors</span></div>
+    </div>
+
+    <div style="margin-top:2rem;">
+      <a href="https://www.uwa.edu/cahaba-diversity-center/" target="_blank" class="btn btn-outline">Learn more about CBC →</a>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="cbc-lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="cbc-lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt=""/>
+  <p class="cbc-lightbox-credit" id="lightboxCredit"></p>
+</div>
+
 <footer>
   <span class="fb"><img src="img/lablogo.jpeg" alt="Assis Lab" style="height:52px;width:52px;object-fit:contain;border-radius:8px;margin-right:10px;vertical-align:middle;opacity:0.9;"/>drassislab.com</span>
   <ul class="fl">
     <li><a onclick="go('about')" data-i="nav_about">About</a></li>
     <li><a onclick="go('publications','all')" data-i="nav_pub">Publications</a></li>
+    <li><a onclick="go('projects')" data-i="nav_proj">Projects</a></li>
     <li><a onclick="go('students')" data-i="nav_students">Students</a></li>
     <li><a onclick="go('gallery')" data-i="nav_gallery">Gallery</a></li>
     <li><a onclick="goContact()" data-i="nav_contact">Contact</a></li>
@@ -357,17 +585,110 @@
 
 <script>
 const PUBS=[
-  {year:2025,title:"Individual variation underlies large-scale patterns: host conditions and behavior affect parasitism",journal:"Ecology Letters · Vania Regina Assis, Lynn B. Martin et al.",areas:["lyme","conservation"],badge:"New"},
-  {year:2023,title:"Introduction to the special issue: Amphibian immunity — stress, disease and ecoimmunology",journal:"Philosophical Transactions of the Royal Society B · DOI: 10.1098/rstb.2022.0117 · Guest Editor",areas:["ecoimmunology","conservation"],badge:"Phil Trans R Soc B"},
-  {year:2022,title:"Optimizing studies of phagocytic activity by Flowsight Cytometry in amphibians",journal:"South American Journal of Herpetology 23(1):58–66 · DOI: 10.2994/SAJH-D-20-00006.1",areas:["cytometry","ecoimmunology"],badge:null},
-  {year:2020,title:"Corticosterone transdermal application in toads (Rhinella icterica): effects on cellular and humoral immunity and steroid plasma levels",journal:"Journal of Experimental Zoology · DOI: 10.1002/jez.2093",areas:["cort","ecoimmunology"],badge:"Cover Article"},
-  {year:2019,title:"ACTH modulation on corticosterone, melatonin, testosterone and innate immune response in the tree frog Hypsiboas faber",journal:"General and Comparative Endocrinology",areas:["behavior","ecoimmunology"],badge:null},
-  {year:2018,title:"Effects of acute restraint stress, prolonged captivity stress and transdermal corticosterone application on immunocompetence in the Cururu toad (Rhinella icterica)",journal:"Physiological and Biochemical Zoology",areas:["cort","ecoimmunology","behavior"],badge:null},
-  {year:2017,title:"Seasonal variation in immune response and plasma steroid levels in male treefrogs (Hypsiboas faber)",journal:"Journal of Experimental Zoology",areas:["behavior","ecoimmunology"],badge:null},
-  {year:2016,title:"Ecoimmunology: exploring the links between immune function and ecology in reptiles and amphibians",journal:"Hormones and Behavior",areas:["ecoimmunology","conservation"],badge:null},
-  {year:2015,title:"Lyme disease in North America: host immune mechanisms in Peromyscus — current findings",journal:"Disease Ecology · Vania Assis et al.",areas:["lyme"],badge:null},
-  {year:2014,title:"Flow cytometry approaches to characterize leucocyte phenotypes in Brazilian anurans",journal:"Developmental & Comparative Immunology",areas:["cytometry"],badge:null},
-  {year:2013,title:"Conservation physiology of Brazilian amphibians: immune and endocrine markers as indicators of environmental stress",journal:"Conservation Physiology",areas:["conservation","cort"],badge:null}
+  {
+    year:2025,
+    title:"Individual variation underlies large-scale patterns: host conditions and behavior affect parasitism",
+    journal:"Ecology Letters · Assis VR, Martin LB et al.",
+    areas:["lyme","conservation"],
+    badge:"New",
+    url:"https://doi.org/10.1111/ele.70042"
+  },
+  {
+    year:2023,
+    title:"Introduction to the special issue: Amphibian immunity — stress, disease and ecoimmunology",
+    journal:"Philosophical Transactions of the Royal Society B · Assis VR, Robert J, Titon SCM · Guest Editor",
+    areas:["ecoimmunology","conservation"],
+    badge:"Phil Trans R Soc B",
+    url:"https://doi.org/10.1098/rstb.2022.0117"
+  },
+  {
+    year:2023,
+    title:"Testosterone immunomodulation in free-living and captive Rhinella icterica male toads",
+    journal:"Philosophical Transactions of the Royal Society B · Titon SCM, Titon Jr B, Assis VR et al.",
+    areas:["behavior","cort"],
+    badge:"Phil Trans R Soc B",
+    url:"https://doi.org/10.1098/rstb.2022.0118"
+  },
+  {
+    year:2022,
+    title:"Immunoendocrinology and ecoimmunology in Brazilian anurans",
+    journal:"Integrative and Comparative Biology · Gomes FR, Madelaire CB, Moretti EH, Titon SCM, Assis VR",
+    areas:["ecoimmunology","behavior"],
+    badge:null,
+    url:"https://doi.org/10.1093/icb/icac014"
+  },
+  {
+    year:2022,
+    title:"The impacts of transdermal application of corticosterone on toad (Rhinella icterica) immunity",
+    journal:"Integrative and Comparative Biology · Assis VR, Titon SCM, Titon Jr B, Gomes FR",
+    areas:["cort","ecoimmunology"],
+    badge:null,
+    url:"https://doi.org/10.1093/icb/icac130"
+  },
+  {
+    year:2022,
+    title:"Optimizing studies of phagocytic activity by Flowsight Cytometry in amphibians",
+    journal:"South American Journal of Herpetology 23(1):58–66 · Titon SCM, Assis VR et al.",
+    areas:["cytometry","ecoimmunology"],
+    badge:null,
+    url:"https://doi.org/10.2994/SAJH-D-20-00006.1"
+  },
+  {
+    year:2021,
+    title:"Short-term stressors and corticosterone effects on immunity in male toads (Rhinella icterica): a neuroimmune-endocrine approach",
+    journal:"Brain, Behavior and Immunity · Titon SCM, Titon Jr B, Gomes FR, Assis VR",
+    areas:["cort","ecoimmunology","behavior"],
+    badge:null,
+    url:"https://doi.org/10.1016/j.bbi.2021.02.031"
+  },
+  {
+    year:2020,
+    title:"Introduction to the special issue: Ecoimmunology in ectotherms",
+    journal:"Journal of Experimental Zoology Part A · Assis VR, Titon SCM · Guest Editors",
+    areas:["ecoimmunology","conservation"],
+    badge:"Special Issue Editor",
+    url:"https://doi.org/10.1002/jez.2437"
+  },
+  {
+    year:2020,
+    title:"Corticosterone transdermal application in toads (Rhinella icterica): effects on cellular and humoral immunity and steroid plasma levels",
+    journal:"Journal of Experimental Zoology Part A · Assis VR, Titon SCM, Titon Jr B, Gomes FR",
+    areas:["cort","ecoimmunology"],
+    badge:"Cover Article",
+    url:"https://doi.org/10.1002/jez.2093"
+  },
+  {
+    year:2017,
+    title:"ACTH modulation on corticosterone, melatonin, testosterone and innate immune response in the tree frog Hypsiboas faber",
+    journal:"Comparative Biochemistry and Physiology Part A · Barsotti AM, Assis VR, Titon SCM, Titon Jr B, Ferreira ZFS, Gomes FR",
+    areas:["behavior","ecoimmunology"],
+    badge:null,
+    url:"https://doi.org/10.1016/j.cbpa.2016.12.002"
+  },
+  {
+    year:2013,
+    title:"Antimicrobial capacity of plasma from anurans of the Atlantic Forest",
+    journal:"South American Journal of Herpetology 8(3):155–160 · Assis VR, Titon SCM, Barsotti AMG, Spira B, Gomes FR",
+    areas:["ecoimmunology","conservation"],
+    badge:null,
+    url:"https://doi.org/10.2994/SAJH-D-13-00007.1"
+  },
+  {
+    year:2012,
+    title:"Interspecific variation in innate immune defenses and stress response of toads from Botucatu (São Paulo, Brazil)",
+    journal:"South American Journal of Herpetology 7(1):1–8 · Gomes FR, Oliveira RV, Assis VR, Titon Jr B, Moretti EH, Mendonça MT",
+    areas:["ecoimmunology","conservation"],
+    badge:null,
+    url:"https://doi.org/10.2994/057.007.0101"
+  },
+  {
+    year:2012,
+    title:"Vocal and territorial behavior in the Smith frog (Hypsiboas faber): relationships with plasma levels of corticosterone and testosterone",
+    journal:"Journal of Comparative Physiology B · Assis VR, Navas CA, Mendonça MT, Gomes FR",
+    areas:["behavior"],
+    badge:null,
+    url:"https://doi.org/10.1007/s00360-012-0698-7"
+  }
 ];
 const AL={ecoimmunology:"Amphibian Ecoimmunology",lyme:"Lyme Disease",behavior:"Stress & Behavior",cytometry:"Flow Cytometry",cort:"Corticosterone Methods",conservation:"Conservation"};
 let curF='all';
@@ -378,7 +699,7 @@ function renderPubs(f){
   const data=f==='all'?PUBS:PUBS.filter(p=>p.areas.includes(f));
   document.querySelectorAll('.fp').forEach(p=>p.classList.toggle('active',p.dataset.f===f));
   if(!data.length){list.innerHTML='<div class="pub-empty">No publications found.</div>';return;}
-  list.innerHTML=data.map(p=>`<div class="pub"><span class="pub-yr">${p.year}</span><div><p class="pub-ttl">${p.title}${p.badge?` <span class="pb">${p.badge}</span>`:''}</p><p class="pub-jnl">${p.journal}</p><div class="pub-tags">${p.areas.map(a=>`<span class="pt">${AL[a]||a}</span>`).join('')}</div></div></div>`).join('');
+  list.innerHTML=data.map(p=>`<div class="pub"><span class="pub-yr">${p.year}</span><div><p class="pub-ttl">${p.title}${p.badge?` <span class="pb">${p.badge}</span>`:''}</p><p class="pub-jnl">${p.journal}</p><div class="pub-tags" style="margin-top:6px;">${p.areas.map(a=>`<span class="pt">${AL[a]||a}</span>`).join('')}${p.url?`<a href="${p.url}" target="_blank" style="font-size:10px;padding:2px 8px;border-radius:10px;background:#EFF6FF;color:#1D4ED8;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:3px;">↗ DOI</a>`:''}</div></div></div>`).join('');
 }
 function fp(f){renderPubs(f);}
 
@@ -388,6 +709,7 @@ function go(page,filter){
   if(t){t.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
   document.querySelectorAll('.nav-links a[data-pg]').forEach(a=>a.classList.toggle('active',a.dataset.pg===page));
   if(page==='publications'){renderPubs(filter||'all');}
+  if(page==='cbc'){setTimeout(loadCBCGallery,100);}
   document.getElementById('nl').classList.remove('open');
 }
 function goContact(){
@@ -397,9 +719,9 @@ function goContact(){
 
 // i18n
 const T={
-  en:{nav_about:"About",nav_pub:"Publications",nav_students:"Students",nav_gallery:"Gallery",nav_contact:"Contact",hero_tag:"Biologist · Physiologist · Herpetologist",hero_sub:"Assistant Professor at the University of West Alabama. Exploring the interrelationships between stress, behavior, and immunity in amphibians and wildlife.",hero_btn1:"About me →",hero_btn2:"Get in Touch",stat_pub:"Publications",stat_cit:"Citations",stat_yrs:"Years Research",stat_inst:"Institutions",r_title:"Research Areas",r1n:"Amphibian Ecoimmunology",r1d:"How stress hormones modulate immune function in anurans under natural and experimental conditions.",r2n:"Lyme Disease & Host Immunity",r2d:"Investigating Borrelia burgdorferi via epigenetic and immune mechanisms in Peromyscus hosts.",r3n:"Stress, Behavior & Reproduction",r3d:"Interplay between corticosterone, testosterone, and calling behavior in Neotropical frogs.",r4n:"Flow Cytometry in Amphibians",r4d:"Developing Flowsight cytometry protocols to characterize immune cell phenotypes in amphibians.",r5n:"Corticosterone Methods",r5d:"Validating transdermal CORT application as a non-invasive tool to simulate physiological stress.",r6n:"Conservation Physiology",r6d:"Applying physiological tools to monitor wild amphibian populations and assess disease resilience.",p_title:"Affiliations & Partners",p_rsb:"Royal Society — Phil Trans B",c_title:"Contact",c_reach:"Get in touch",c_msg:"Send a message",gf_txt:'To activate: go to <strong>forms.google.com</strong>, create your contact form (Name, Email, Subject, Message), click <strong>Send → &lt;&gt; Embed</strong>, and replace this block with the iframe code.<br><br>Example:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code>',gf_btn:"Create Google Form →",back:"Back to home",ab_ttl:"About",ab_p1:"I am a biologist, physiologist, and herpetologist exploring the interrelationships between stress, behavior and immunity. My research uses comparative physiology approaches to understand how glucocorticoids modulate immune function in amphibians and wildlife, with implications for conservation biology and disease ecology.",ab_p2:"Currently, as an Assistant Professor at the University of West Alabama, I am investigating the causative agent of Lyme disease (Borrelia burgdorferi) using epigenetic and immune mechanisms in two of the most abundant and broadly distributed competent hosts in North America: Peromyscus leucopus and P. maniculatus.",ab_p3:"I use cellular (phagocytosis, white blood cell profiles) and humoral (complement system, natural antibodies, cytokines) immune variables alongside endocrine markers such as plasma corticosterone and testosterone levels.",edu_ttl:"Academic Background",edu_pd2:"Post-Doctoral Research",edu_pd1:"Post-Doctoral Research",edu_phd:"PhD — General Physiology",edu_ms:"MSc — General Physiology",edu_bs:"BSc — Biological Sciences",pub_ttl:"Publications",pub_sub:"Peer-reviewed articles, book chapters and special issues",f_all:"All",f_eco:"Amphibian Ecoimmunology",f_lyme:"Lyme Disease",f_beh:"Stress & Behavior",f_cyt:"Flow Cytometry",f_cort:"Corticosterone Methods",f_con:"Conservation",st_ttl:"Students & Mentees",st_sub:"Current and former graduate and undergraduate researchers",st_ph:"Name — to be added",st_note:"* Student information will be updated soon.",gal_ttl:"Gallery",gal_sub:"Field work, lab, conferences and team",gal_note:"📸 Photos coming soon.",g1:"Lab work",g2:"Field collection",g3:"Conference",g4:"Fieldwork",g5:"Team in the field",g6:"Mentoring",g7:"Thesis defense",footer:"Made with science & love"},
-  pt:{nav_about:"Sobre",nav_pub:"Publicações",nav_students:"Alunos",nav_gallery:"Galeria",nav_contact:"Contato",hero_tag:"Bióloga · Fisiologista · Herpetóloga",hero_sub:"Professora Assistente na University of West Alabama. Explorando as inter-relações entre estresse, comportamento e imunidade em anfíbios e vida selvagem.",hero_btn1:"Sobre mim →",hero_btn2:"Entre em Contato",stat_pub:"Publicações",stat_cit:"Citações",stat_yrs:"Anos de Pesquisa",stat_inst:"Instituições",r_title:"Áreas de Pesquisa",r1n:"Ecoimunologia de Anfíbios",r1d:"Como os hormônios do estresse modulam a função imune em anuros em condições naturais e experimentais.",r2n:"Doença de Lyme & Imunidade",r2d:"Investigando a Borrelia burgdorferi por mecanismos epigenéticos e imunológicos em hospedeiros Peromyscus.",r3n:"Estresse, Comportamento & Reprodução",r3d:"Interação entre corticosterona, testosterona e comportamento vocal em pererecas neotropicais.",r4n:"Citometria de Fluxo em Anfíbios",r4d:"Desenvolvendo protocolos de citometria Flowsight para caracterizar fenótipos de células imunes em anfíbios.",r5n:"Métodos com Corticosterona",r5d:"Validando a aplicação transdérmica de CORT como ferramenta não-invasiva para simular estresse fisiológico.",r6n:"Fisiologia da Conservação",r6d:"Aplicando ferramentas fisiológicas para monitorar populações silvestres de anfíbios e avaliar resiliência.",p_title:"Afiliações & Parcerias",p_rsb:"Royal Society — Phil Trans B",c_title:"Contato",c_reach:"Entre em contato",c_msg:"Envie uma mensagem",gf_txt:'Para ativar: acesse <strong>forms.google.com</strong>, crie o formulário (Nome, E-mail, Assunto, Mensagem), clique em <strong>Enviar → &lt;&gt; Incorporar</strong> e substitua este bloco pelo código iframe.<br><br>Exemplo:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code>',gf_btn:"Criar Google Forms →",back:"Voltar ao início",ab_ttl:"Sobre",ab_p1:"Sou bióloga, fisiologista e herpetóloga, explorando as inter-relações entre estresse, comportamento e imunidade. Minha pesquisa utiliza abordagens de fisiologia comparada para entender como os glicocorticoides modulam a função imune em anfíbios e vida silvestre.",ab_p2:"Atualmente, como Professora Assistente na University of West Alabama, investigo o agente causador da Doença de Lyme (Borrelia burgdorferi) por mecanismos epigenéticos e imunológicos em Peromyscus leucopus e P. maniculatus.",ab_p3:"Utilizo variáveis imunes celulares (fagocitose, perfil de leucócitos) e humorais (sistema complemento, anticorpos naturais, citocinas) junto com marcadores endócrinos como corticosterona e testosterona plasmáticos.",edu_ttl:"Formação Acadêmica",edu_pd2:"Pós-Doutorado",edu_pd1:"Pós-Doutorado",edu_phd:"Doutorado — Fisiologia Geral",edu_ms:"Mestrado — Fisiologia Geral",edu_bs:"Graduação — Ciências Biológicas",pub_ttl:"Publicações",pub_sub:"Artigos revisados por pares, capítulos de livros e edições especiais",f_all:"Todas",f_eco:"Ecoimunologia de Anfíbios",f_lyme:"Doença de Lyme",f_beh:"Estresse & Comportamento",f_cyt:"Citometria de Fluxo",f_cort:"Métodos com Corticosterona",f_con:"Conservação",st_ttl:"Alunos & Orientandos",st_sub:"Pesquisadores de pós-graduação e graduação atuais e egressos",st_ph:"Nome — a ser adicionado",st_note:"* Informações dos alunos serão atualizadas em breve.",gal_ttl:"Galeria",gal_sub:"Campo, laboratório, congressos e equipe",gal_note:"📸 Fotos em breve.",g1:"Laboratório",g2:"Coleta em campo",g3:"Congresso",g4:"Trabalho de campo",g5:"Equipe em campo",g6:"Orientação",g7:"Defesa de tese",footer:"Feito com ciência e carinho"},
-  es:{nav_about:"Acerca de",nav_pub:"Publicaciones",nav_students:"Estudiantes",nav_gallery:"Galería",nav_contact:"Contacto",hero_tag:"Bióloga · Fisióloga · Herpetóloga",hero_sub:"Profesora Asistente en la University of West Alabama. Explorando las interrelaciones entre estrés, comportamiento e inmunidad en anfibios y vida silvestre.",hero_btn1:"Sobre mí →",hero_btn2:"Contactar",stat_pub:"Publicaciones",stat_cit:"Citaciones",stat_yrs:"Años de Investigación",stat_inst:"Instituciones",r_title:"Áreas de Investigación",r1n:"Ecoinmunología de Anfibios",r1d:"Cómo las hormonas del estrés modulan la función inmune en anuros en condiciones naturales y experimentales.",r2n:"Enfermedad de Lyme e Inmunidad",r2d:"Investigando Borrelia burgdorferi mediante mecanismos epigenéticos e inmunológicos en huéspedes Peromyscus.",r3n:"Estrés, Comportamiento & Reproducción",r3d:"Interacción entre corticosterona, testosterona y comportamiento vocal en ranas neotropicales.",r4n:"Citometría de Flujo en Anfibios",r4d:"Desarrollando protocolos Flowsight para caracterizar fenotipos de células inmunes en anfibios.",r5n:"Métodos con Corticosterona",r5d:"Validando la aplicación transdérmica de CORT como herramienta no invasiva para simular estrés fisiológico.",r6n:"Fisiología de la Conservación",r6d:"Aplicando herramientas fisiológicas para monitorear poblaciones silvestres de anfibios y evaluar resiliencia.",p_title:"Afiliaciones & Socios",p_rsb:"Royal Society — Phil Trans B",c_title:"Contacto",c_reach:"Comuníquese conmigo",c_msg:"Envíe un mensaje",gf_txt:'Para activar: vaya a <strong>forms.google.com</strong>, cree el formulario (Nombre, Correo, Asunto, Mensaje), haga clic en <strong>Enviar → &lt;&gt; Insertar</strong> y reemplace este bloque con el código iframe.<br><br>Ejemplo:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code>',gf_btn:"Crear Google Forms →",back:"Volver al inicio",ab_ttl:"Acerca de",ab_p1:"Soy bióloga, fisióloga y herpetóloga, explorando las interrelaciones entre estrés, comportamiento e inmunidad. Mi investigación utiliza enfoques de fisiología comparada para entender cómo los glucocorticoides modulan la función inmune en anfibios y vida silvestre.",ab_p2:"Actualmente, como Profesora Asistente en la University of West Alabama, investigo el agente causante de la enfermedad de Lyme (Borrelia burgdorferi) mediante mecanismos epigenéticos e inmunológicos en Peromyscus leucopus y P. maniculatus.",ab_p3:"Utilizo variables inmunes celulares (fagocitosis, perfil leucocitario) y humorales (complemento, anticuerpos naturales, citocinas) junto con marcadores endocrinos como corticosterona y testosterona plasmáticos.",edu_ttl:"Formación Académica",edu_pd2:"Postdoctorado",edu_pd1:"Postdoctorado",edu_phd:"Doctorado — Fisiología General",edu_ms:"Maestría — Fisiología General",edu_bs:"Licenciatura — Ciencias Biológicas",pub_ttl:"Publicaciones",pub_sub:"Artículos revisados, capítulos de libros y números especiales",f_all:"Todas",f_eco:"Ecoinmunología de Anfibios",f_lyme:"Enfermedad de Lyme",f_beh:"Estrés & Comportamiento",f_cyt:"Citometría de Flujo",f_cort:"Métodos con Corticosterona",f_con:"Conservación",st_ttl:"Estudiantes & Orientados",st_sub:"Investigadores actuales y anteriores de posgrado y pregrado",st_ph:"Nombre — por agregar",st_note:"* La información de los estudiantes se actualizará pronto.",gal_ttl:"Galería",gal_sub:"Campo, laboratorio, congresos y equipo",gal_note:"📸 Fotos próximamente.",g1:"Laboratorio",g2:"Colecta en campo",g3:"Congreso",g4:"Trabajo de campo",g5:"Equipo en campo",g6:"Tutoría",g7:"Defensa de tesis",footer:"Hecho con ciencia y amor"}
+  en:{nav_about:"About",nav_pub:"Publications",nav_students:"Students",nav_gallery:"Gallery",nav_contact:"Contact",hero_tag:"Biologist · Physiologist · Herpetologist",hero_sub:"Assistant Professor at the University of West Alabama. Exploring the interrelationships between stress, behavior, and immunity in amphibians and wildlife.",hero_btn1:"About me →",hero_btn2:"Get in Touch",stat_pub:"Publications",stat_cit:"Citations",stat_yrs:"Years Research",stat_inst:"Institutions",r_title:"Research Areas",r1n:"Amphibian Ecoimmunology",r1d:"How stress hormones modulate immune function in anurans under natural and experimental conditions.",r2n:"Lyme Disease & Host Immunity",r2d:"Investigating Borrelia burgdorferi via epigenetic and immune mechanisms in Peromyscus hosts.",r3n:"Stress, Behavior & Reproduction",r3d:"Interplay between corticosterone, testosterone, and calling behavior in Neotropical frogs.",r4n:"Flow Cytometry in Amphibians",r4d:"Developing Flowsight cytometry protocols to characterize immune cell phenotypes in amphibians.",r5n:"Corticosterone Methods",r5d:"Validating transdermal CORT application as a non-invasive tool to simulate physiological stress.",r6n:"Conservation Physiology",r6d:"Applying physiological tools to monitor wild amphibian populations and assess disease resilience.",p_title:"Affiliations & Partners",p_rsb:"Royal Society — Phil Trans B",c_title:"Contact",c_reach:"Get in touch",c_msg:"Send a message",gf_txt:'To activate: go to <strong>forms.google.com</strong>, create your contact form (Name, Email, Subject, Message), click <strong>Send → &lt;&gt; Embed</strong>, and replace this block with the iframe code.<br><br>Example:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code>',gf_btn:"Create Google Form →",back:"Back to home",ab_ttl:"About",ab_p1:"I am a biologist, physiologist, and herpetologist exploring the interrelationships between stress, behavior and immunity. My research uses comparative physiology approaches to understand how glucocorticoids modulate immune function in amphibians and wildlife, with implications for conservation biology and disease ecology.",ab_p2:"Currently, as an Assistant Professor at the University of West Alabama, I am investigating the causative agent of Lyme disease (Borrelia burgdorferi) using epigenetic and immune mechanisms in two of the most abundant and broadly distributed competent hosts in North America: Peromyscus leucopus and P. maniculatus.",ab_p3:"I use cellular (phagocytosis, white blood cell profiles) and humoral (complement system, natural antibodies, cytokines) immune variables alongside endocrine markers such as plasma corticosterone and testosterone levels.",edu_ttl:"Academic Background",edu_pd2:"Post-Doctoral Research",edu_pd1:"Post-Doctoral Research",edu_phd:"PhD — General Physiology",edu_ms:"MSc — General Physiology",edu_bs:"BSc — Biological Sciences",pub_ttl:"Publications",pub_sub:"Peer-reviewed articles, book chapters and special issues",f_all:"All",f_eco:"Amphibian Ecoimmunology",f_lyme:"Lyme Disease",f_beh:"Stress & Behavior",f_cyt:"Flow Cytometry",f_cort:"Corticosterone Methods",f_con:"Conservation",st_ttl:"Students & Mentees",st_sub:"Current and former graduate and undergraduate researchers",st_ph:"Name — to be added",st_note:"* Student information will be updated soon.",gal_ttl:"Gallery",gal_sub:"Field work, lab, conferences and team",gal_note:"📸 Photos coming soon.",g1:"Lab work",g2:"Field collection",g3:"Conference",g4:"Fieldwork",g5:"Team in the field",g6:"Mentoring",g7:"Thesis defense",footer:"Made with science & love",nav_proj:"Projects",proj_ttl:"Projects",proj_sub:"Research projects, field work and collaborations",active_badge:"Active",cbc_short:"Field research and biodiversity studies at UWA's 2,100-acre natural reserve along the Cahaba River, Bibb County, Alabama.",read_more:"View project →",proj_coming:"More projects coming soon",proj_coming_desc:"Additional research projects will be added here.",back_proj:"Back to projects",cbc_p1:"The UWA Cahaba Biodiversity Center (CBC) is located on over 2,100 acres of pristine land in Bibb County, Alabama, with extensive frontage on the Cahaba River — one of the most biodiverse rivers in North America. The property was gifted to the University of West Alabama by landowner William D. 'Bill' Hubbard.",cbc_p2:"Alabama ranks 4th in biodiversity among all U.S. states and 1st east of the Mississippi River, leading in freshwater fish, mussels, snails, turtles, and crayfish species. The CBC sits at a unique transition zone between the Appalachians and the Coastal Plain.",cbc_p3:"Dr. Vania Assis conducts field research at the CBC, integrating conservation physiology with the Center's mission to advance biodiversity research and education.",cbc_gallery:"Gallery & Media",cbc_credit_note:"📸 Photo and video credits are attributed to the respective photographers as indicated by folder names in the repository.",cbc_videos:"Videos",videos_coming:"Videos coming soon. Add YouTube/Vimeo embed codes here.",cbc_facts:"Quick Facts",fact_acres:"Acres",fact_river:"River Frontage",fact_bio:"Biodiversity E. of Mississippi",fact_visitors:"Annual Visitors"},
+  pt:{nav_about:"Sobre",nav_pub:"Publicações",nav_students:"Alunos",nav_gallery:"Galeria",nav_contact:"Contato",hero_tag:"Bióloga · Fisiologista · Herpetóloga",hero_sub:"Professora Assistente na University of West Alabama. Explorando as inter-relações entre estresse, comportamento e imunidade em anfíbios e vida selvagem.",hero_btn1:"Sobre mim →",hero_btn2:"Entre em Contato",stat_pub:"Publicações",stat_cit:"Citações",stat_yrs:"Anos de Pesquisa",stat_inst:"Instituições",r_title:"Áreas de Pesquisa",r1n:"Ecoimunologia de Anfíbios",r1d:"Como os hormônios do estresse modulam a função imune em anuros em condições naturais e experimentais.",r2n:"Doença de Lyme & Imunidade",r2d:"Investigando a Borrelia burgdorferi por mecanismos epigenéticos e imunológicos em hospedeiros Peromyscus.",r3n:"Estresse, Comportamento & Reprodução",r3d:"Interação entre corticosterona, testosterona e comportamento vocal em pererecas neotropicais.",r4n:"Citometria de Fluxo em Anfíbios",r4d:"Desenvolvendo protocolos de citometria Flowsight para caracterizar fenótipos de células imunes em anfíbios.",r5n:"Métodos com Corticosterona",r5d:"Validando a aplicação transdérmica de CORT como ferramenta não-invasiva para simular estresse fisiológico.",r6n:"Fisiologia da Conservação",r6d:"Aplicando ferramentas fisiológicas para monitorar populações silvestres de anfíbios e avaliar resiliência.",p_title:"Afiliações & Parcerias",p_rsb:"Royal Society — Phil Trans B",c_title:"Contato",c_reach:"Entre em contato",c_msg:"Envie uma mensagem",gf_txt:'Para ativar: acesse <strong>forms.google.com</strong>, crie o formulário (Nome, E-mail, Assunto, Mensagem), clique em <strong>Enviar → &lt;&gt; Incorporar</strong> e substitua este bloco pelo código iframe.<br><br>Exemplo:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code>',gf_btn:"Criar Google Forms →",back:"Voltar ao início",ab_ttl:"Sobre",ab_p1:"Sou bióloga, fisiologista e herpetóloga, explorando as inter-relações entre estresse, comportamento e imunidade. Minha pesquisa utiliza abordagens de fisiologia comparada para entender como os glicocorticoides modulam a função imune em anfíbios e vida silvestre.",ab_p2:"Atualmente, como Professora Assistente na University of West Alabama, investigo o agente causador da Doença de Lyme (Borrelia burgdorferi) por mecanismos epigenéticos e imunológicos em Peromyscus leucopus e P. maniculatus.",ab_p3:"Utilizo variáveis imunes celulares (fagocitose, perfil de leucócitos) e humorais (sistema complemento, anticorpos naturais, citocinas) junto com marcadores endócrinos como corticosterona e testosterona plasmáticos.",edu_ttl:"Formação Acadêmica",edu_pd2:"Pós-Doutorado",edu_pd1:"Pós-Doutorado",edu_phd:"Doutorado — Fisiologia Geral",edu_ms:"Mestrado — Fisiologia Geral",edu_bs:"Graduação — Ciências Biológicas",pub_ttl:"Publicações",pub_sub:"Artigos revisados por pares, capítulos de livros e edições especiais",f_all:"Todas",f_eco:"Ecoimunologia de Anfíbios",f_lyme:"Doença de Lyme",f_beh:"Estresse & Comportamento",f_cyt:"Citometria de Fluxo",f_cort:"Métodos com Corticosterona",f_con:"Conservação",st_ttl:"Alunos & Orientandos",st_sub:"Pesquisadores de pós-graduação e graduação atuais e egressos",st_ph:"Nome — a ser adicionado",st_note:"* Informações dos alunos serão atualizadas em breve.",form_note:"Sua mensagem vai direto para a caixa de entrada da Dra. Assis.",form_name:"Nome",form_email:"E-mail",form_subject:"Assunto",form_msg:"Sua mensagem...",form_send:"Enviar mensagem →",gal_ttl:"Galeria",gal_sub:"Campo, laboratório, congressos e equipe",gal_note:"📸 Fotos em breve.",g1:"Laboratório",g2:"Coleta em campo",g3:"Congresso",g4:"Trabalho de campo",g5:"Equipe em campo",g6:"Orientação",g7:"Defesa de tese",footer:"Feito com ciência e carinho",nav_proj:"Projetos",proj_ttl:"Projetos",proj_sub:"Projetos de pesquisa, trabalho de campo e colaborações",active_badge:"Ativo",cbc_short:"Pesquisa de campo e estudos de biodiversidade na reserva natural de 2.100 acres da UWA às margens do Rio Cahaba, Condado de Bibb, Alabama.",read_more:"Ver projeto →",proj_coming:"Mais projetos em breve",proj_coming_desc:"Projetos de pesquisa adicionais serão incluídos aqui.",back_proj:"Voltar aos projetos",cbc_p1:"O UWA Cahaba Biodiversity Center (CBC) está localizado em mais de 2.100 acres de terra preservada no Condado de Bibb, Alabama, com ampla margem no Rio Cahaba — um dos rios com maior biodiversidade da América do Norte. A propriedade foi doada à University of West Alabama pelo proprietário William D. 'Bill' Hubbard.",cbc_p2:"O Alabama ocupa o 4º lugar em biodiversidade entre todos os estados dos EUA e o 1º a leste do Rio Mississippi, liderando em espécies de peixes de água doce, mexilhões, caramujos, tartarugas e lagostins. O CBC está situado em uma zona de transição única entre os Apalaches e a Planície Costeira.",cbc_p3:"A Dra. Vania Assis realiza pesquisas de campo no CBC, integrando a fisiologia da conservação com a missão do Centro de promover a pesquisa e a educação em biodiversidade.",cbc_gallery:"Galeria & Mídia",cbc_credit_note:"📸 Os créditos das fotos e vídeos são atribuídos aos respectivos fotógrafos conforme indicado pelos nomes das pastas no repositório.",cbc_videos:"Vídeos",videos_coming:"Vídeos em breve. Adicione os códigos de incorporação do YouTube/Vimeo aqui.",cbc_facts:"Dados Rápidos",fact_acres:"Acres",fact_river:"Margem do Rio",fact_bio:"Biodiversidade L. do Mississippi",fact_visitors:"Visitantes por Ano"},
+  es:{nav_about:"Acerca de",nav_pub:"Publicaciones",nav_students:"Estudiantes",nav_gallery:"Galería",nav_contact:"Contacto",hero_tag:"Bióloga · Fisióloga · Herpetóloga",hero_sub:"Profesora Asistente en la University of West Alabama. Explorando las interrelaciones entre estrés, comportamiento e inmunidad en anfibios y vida silvestre.",hero_btn1:"Sobre mí →",hero_btn2:"Contactar",stat_pub:"Publicaciones",stat_cit:"Citaciones",stat_yrs:"Años de Investigación",stat_inst:"Instituciones",r_title:"Áreas de Investigación",r1n:"Ecoinmunología de Anfibios",r1d:"Cómo las hormonas del estrés modulan la función inmune en anuros en condiciones naturales y experimentales.",r2n:"Enfermedad de Lyme e Inmunidad",r2d:"Investigando Borrelia burgdorferi mediante mecanismos epigenéticos e inmunológicos en huéspedes Peromyscus.",r3n:"Estrés, Comportamiento & Reproducción",r3d:"Interacción entre corticosterona, testosterona y comportamiento vocal en ranas neotropicales.",r4n:"Citometría de Flujo en Anfibios",r4d:"Desarrollando protocolos Flowsight para caracterizar fenotipos de células inmunes en anfibios.",r5n:"Métodos con Corticosterona",r5d:"Validando la aplicación transdérmica de CORT como herramienta no invasiva para simular estrés fisiológico.",r6n:"Fisiología de la Conservación",r6d:"Aplicando herramientas fisiológicas para monitorear poblaciones silvestres de anfibios y evaluar resiliencia.",p_title:"Afiliaciones & Socios",p_rsb:"Royal Society — Phil Trans B",c_title:"Contacto",c_reach:"Comuníquese conmigo",c_msg:"Envíe un mensaje",gf_txt:'Para activar: vaya a <strong>forms.google.com</strong>, cree el formulario (Nombre, Correo, Asunto, Mensaje), haga clic en <strong>Enviar → &lt;&gt; Insertar</strong> y reemplace este bloque con el código iframe.<br><br>Ejemplo:<br><code>&lt;iframe src="https://docs.google.com/forms/..." height="520"&gt;&lt;/iframe&gt;</code>',gf_btn:"Crear Google Forms →",back:"Volver al inicio",ab_ttl:"Acerca de",ab_p1:"Soy bióloga, fisióloga y herpetóloga, explorando las interrelaciones entre estrés, comportamiento e inmunidad. Mi investigación utiliza enfoques de fisiología comparada para entender cómo los glucocorticoides modulan la función inmune en anfibios y vida silvestre.",ab_p2:"Actualmente, como Profesora Asistente en la University of West Alabama, investigo el agente causante de la enfermedad de Lyme (Borrelia burgdorferi) mediante mecanismos epigenéticos e inmunológicos en Peromyscus leucopus y P. maniculatus.",ab_p3:"Utilizo variables inmunes celulares (fagocitosis, perfil leucocitario) y humorales (complemento, anticuerpos naturales, citocinas) junto con marcadores endocrinos como corticosterona y testosterona plasmáticos.",edu_ttl:"Formación Académica",edu_pd2:"Postdoctorado",edu_pd1:"Postdoctorado",edu_phd:"Doctorado — Fisiología General",edu_ms:"Maestría — Fisiología General",edu_bs:"Licenciatura — Ciencias Biológicas",pub_ttl:"Publicaciones",pub_sub:"Artículos revisados, capítulos de libros y números especiales",f_all:"Todas",f_eco:"Ecoinmunología de Anfibios",f_lyme:"Enfermedad de Lyme",f_beh:"Estrés & Comportamiento",f_cyt:"Citometría de Flujo",f_cort:"Métodos con Corticosterona",f_con:"Conservación",st_ttl:"Estudiantes & Orientados",st_sub:"Investigadores actuales y anteriores de posgrado y pregrado",st_ph:"Nombre — por agregar",st_note:"* La información de los estudiantes se actualizará pronto.",form_note:"Su mensaje va directamente a la bandeja de entrada de la Dra. Assis.",form_name:"Nombre",form_email:"Correo",form_subject:"Asunto",form_msg:"Su mensaje...",form_send:"Enviar mensaje →",gal_ttl:"Galería",gal_sub:"Campo, laboratorio, congresos y equipo",gal_note:"📸 Fotos próximamente.",g1:"Laboratorio",g2:"Colecta en campo",g3:"Congreso",g4:"Trabajo de campo",g5:"Equipo en campo",g6:"Tutoría",g7:"Defensa de tesis",footer:"Hecho con ciencia y amor",nav_proj:"Proyectos",proj_ttl:"Proyectos",proj_sub:"Proyectos de investigación, trabajo de campo y colaboraciones",active_badge:"Activo",cbc_short:"Investigación de campo y estudios de biodiversidad en la reserva natural de 2.100 acres de la UWA a orillas del Río Cahaba, Condado de Bibb, Alabama.",read_more:"Ver proyecto →",proj_coming:"Más proyectos próximamente",proj_coming_desc:"Se agregarán proyectos de investigación adicionales aquí.",back_proj:"Volver a proyectos",cbc_p1:"El UWA Cahaba Biodiversity Center (CBC) se encuentra en más de 2.100 acres de tierra prístina en el Condado de Bibb, Alabama, con amplio frente al Río Cahaba, uno de los ríos con mayor biodiversidad en América del Norte. La propiedad fue donada a la UWA por el propietario William D. 'Bill' Hubbard.",cbc_p2:"Alabama ocupa el 4º lugar en biodiversidad entre todos los estados de EE.UU. y el 1º al este del Río Mississippi, liderando en especies de peces de agua dulce, mejillones, caracoles, tortugas y cangrejos de río.",cbc_p3:"La Dra. Vania Assis realiza investigación de campo en el CBC, integrando la fisiología de la conservación con la misión del Centro de avanzar en la investigación y educación en biodiversidad.",cbc_gallery:"Galería y Medios",cbc_credit_note:"📸 Los créditos de fotos y videos se atribuyen a los respectivos fotógrafos según los nombres de las carpetas en el repositorio.",cbc_videos:"Videos",videos_coming:"Videos próximamente. Agregue los códigos embed de YouTube/Vimeo aquí.",cbc_facts:"Datos Rápidos",fact_acres:"Acres",fact_river:"Frente al Río",fact_bio:"Biodiversidad E. del Mississippi",fact_visitors:"Visitantes Anuales"}
 };
 let curL='en';
 function setLang(l){
@@ -409,13 +731,301 @@ function setLang(l){
   ['en','pt','es'].forEach((x,i)=>document.querySelectorAll('.flag-btn')[i].classList.toggle('active',x===l));
   AL.ecoimmunology=t.f_eco||AL.ecoimmunology;AL.lyme=t.f_lyme||AL.lyme;AL.behavior=t.f_beh||AL.behavior;AL.cytometry=t.f_cyt||AL.cytometry;AL.cort=t.f_cort||AL.cort;AL.conservation=t.f_con||AL.conservation;
   if(document.getElementById('page-publications').classList.contains('active'))renderPubs(curF);
+  // Update form placeholders and labels
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph');if(t[k])el.placeholder=t[k];});
+  document.querySelectorAll('[data-i18n-label]').forEach(el=>{const k=el.getAttribute('data-i18n-label');if(t[k])el.textContent=t[k];});
 }
 (function detect(){
   function byBrowser(){const n=(navigator.language||'en').toLowerCase();setLang(n.startsWith('pt')?'pt':n.startsWith('es')?'es':'en');}
   const pt=['BR','PT','AO','MZ','CV','GW','ST','TL'],es=['MX','ES','AR','CO','PE','VE','CL','EC','GT','CU','BO','DO','HN','PY','SV','NI','CR','PA','UY','GQ','PR'];
   fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{const c=(d.country_code||'').toUpperCase();setLang(pt.includes(c)?'pt':es.includes(c)?'es':'en');}).catch(byBrowser);
 })();
+
+// ── CBC GALLERY: loads from GitHub API ──
+const CBC_REPO  = 'rondolfo/drassislab';
+const CBC_FOLDER = 'img/CBC';
+const VIDEO_EXTS = ['mp4','webm','mov'];
+const IMAGE_EXTS = ['jpg','jpeg','png','gif','webp'];
+
+async function loadCBCGallery() {
+  const gallery = document.getElementById('cbcGallery');
+  if (!gallery) return;
+
+  // Fetch all subfolders/files under img/CBC
+  const apiBase = `https://api.github.com/repos/${CBC_REPO}/contents/${encodeURIComponent(CBC_FOLDER)}`;
+  
+  try {
+    const res = await fetch(apiBase);
+    const items = await res.json();
+    
+    // Collect all photographer folders + root files
+    const allMedia = [];
+
+    for (const item of items) {
+      if (item.type === 'dir') {
+        const photographer = item.name; // e.g. "Jefferson Rondolfo"
+        const folderRes = await fetch(item.url);
+        const folderItems = await folderRes.json();
+        for (const file of folderItems) {
+          const ext = file.name.split('.').pop().toLowerCase();
+          if (IMAGE_EXTS.includes(ext) || VIDEO_EXTS.includes(ext)) {
+            allMedia.push({
+              url: `https://raw.githubusercontent.com/${CBC_REPO}/main/${file.path}`,
+              name: file.name,
+              credit: photographer,
+              type: VIDEO_EXTS.includes(ext) ? 'video' : 'image'
+            });
+          }
+        }
+      } else {
+        const ext = item.name.split('.').pop().toLowerCase();
+        // Skip logo
+        if (item.name.toUpperCase().includes('LOGO')) continue;
+        if (IMAGE_EXTS.includes(ext)) {
+          allMedia.push({
+            url: `https://raw.githubusercontent.com/${CBC_REPO}/main/${item.path}`,
+            name: item.name,
+            credit: 'Assis Lab',
+            type: 'image'
+          });
+        }
+      }
+    }
+
+    if (allMedia.length === 0) {
+      gallery.innerHTML = '<div class="cbc-gallery-loading"><span>🌿</span><p>Photos coming soon.</p></div>';
+      return;
+    }
+
+    // Build gallery HTML
+    let html = '';
+    allMedia.forEach((media, i) => {
+      const isWide = (i === 4); // 5th item spans 2 cols
+      const cls = isWide ? 'cbc-media-item cbc-media-wide' : 'cbc-media-item ratio-1';
+      const creditText = `📸 ${media.credit}`;
+      if (media.type === 'image') {
+        html += `<div class="${cls}" onclick="openLightbox('${media.url}','${creditText}')">
+          <img src="${media.url}" alt="${media.name}" loading="lazy"/>
+          <div class="cbc-media-credit">${creditText}</div>
+        </div>`;
+      } else {
+        html += `<div class="${cls}">
+          <video src="${media.url}" controls preload="none" style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+          <div class="cbc-media-credit">${creditText}</div>
+        </div>`;
+      }
+    });
+
+    gallery.innerHTML = html;
+
+  } catch(e) {
+    gallery.innerHTML = '<div class="cbc-gallery-loading"><span>🌿</span><p>Photos will appear once uploaded to GitHub.</p></div>';
+  }
+}
+
+function openLightbox(src, credit) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxCredit').textContent = credit;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.getElementById('lightboxImg').src = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+
+// ── CONTACT FORM (Web3Forms) ──
+async function submitForm(e){
+  e.preventDefault();
+  const btn = document.getElementById('formBtn');
+  const status = document.getElementById('formStatus');
+  const form = document.getElementById('contactForm');
+  btn.textContent = '...';
+  btn.disabled = true;
+  status.className = 'cf-status';
+  try {
+    const res = await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    });
+    const data = await res.json();
+    if(data.success){
+      status.textContent = '✓ Message sent! Dr. Assis will reply soon.';
+      status.className = 'cf-status ok';
+      form.reset();
+    } else {
+      throw new Error(data.message);
+    }
+  } catch(err){
+    status.textContent = '✗ Error sending. Please email vdeassis@uwa.edu directly.';
+    status.className = 'cf-status err';
+  }
+  btn.textContent = document.querySelector('[data-i="form_send"]')?.textContent || 'Send message →';
+  btn.disabled = false;
+}
+
 document.getElementById('nt').addEventListener('click',()=>document.getElementById('nl').classList.toggle('open'));
+
+// ── CBC DYNAMIC GALLERY ──
+const GITHUB_API = 'https://api.github.com/repos/rondolfo/drassislab/contents/img/CBC';
+const RAW_BASE   = 'https://raw.githubusercontent.com/rondolfo/drassislab/main/img/CBC';
+const IMG_EXTS   = ['jpg','jpeg','png','gif','webp'];
+const VID_EXTS   = ['mp4','mov','webm'];
+let lightboxImages = [];
+let lightboxIndex  = 0;
+
+function isImg(name){ return IMG_EXTS.some(e=>name.toLowerCase().endsWith('.'+e)); }
+function isVid(name){ return VID_EXTS.some(e=>name.toLowerCase().endsWith('.'+e)); }
+function initials(name){ return name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2); }
+
+async function loadCBCGallery(){
+  // Only load when CBC page is visible
+  if(!document.getElementById('page-cbc').classList.contains('active')) return;
+  const wrap = document.getElementById('cbcGalleryWrap');
+  const loading = document.getElementById('cbcLoading');
+  if(wrap.dataset.loaded) return; // avoid reloading
+
+  try {
+    // Get top-level CBC folder
+    const res  = await fetch(GITHUB_API);
+    const items = await res.json();
+
+    // Get subfolders (contributor folders) and top-level images
+    const folders    = items.filter(i=>i.type==='dir');
+    const rootImages = items.filter(i=>i.type==='file' && isImg(i.name) && !i.name.toUpperCase().includes('LOGO'));
+    const rootVideos = items.filter(i=>i.type==='file' && isVid(i.name));
+
+    loading.style.display = 'none';
+    lightboxImages = [];
+    let html = '';
+
+    // Root-level images (no specific contributor)
+    if(rootImages.length){
+      const imgs = rootImages.map(f=>({src: RAW_BASE+'/'+encodeURIComponent(f.name), name:f.name, credit:'Assis Lab'}));
+      lightboxImages.push(...imgs);
+      html += buildContributorBlock('Assis Lab', imgs, rootVideos, RAW_BASE);
+    }
+
+    // Per-contributor subfolders
+    for(const folder of folders){
+      const subRes   = await fetch(folder.url);
+      const subItems = await subRes.json();
+      if(!Array.isArray(subItems)) continue;
+      const subImgs = subItems.filter(i=>i.type==='file'&&isImg(i.name));
+      const subVids = subItems.filter(i=>i.type==='file'&&isVid(i.name));
+      if(!subImgs.length && !subVids.length) continue;
+      const credit = folder.name;
+      const base   = RAW_BASE + '/' + encodeURIComponent(folder.name);
+      const imgs   = subImgs.map(f=>({src: base+'/'+encodeURIComponent(f.name), name:f.name, credit}));
+      lightboxImages.push(...imgs);
+      html += buildContributorBlock(credit, imgs, subVids, base);
+    }
+
+    wrap.innerHTML = html || '<p style="color:var(--muted);font-style:italic;padding:1rem">No photos yet in this folder.</p>';
+    wrap.dataset.loaded = '1';
+
+    // Render videos in the video section
+    renderVideos(folders, rootVideos);
+
+  } catch(e){
+    loading.innerHTML = '<p style="color:var(--muted);font-style:italic">Could not load gallery. Please check your internet connection.</p>';
+  }
+}
+
+function buildContributorBlock(contributor, imgs, vids, base){
+  const av = initials(contributor);
+  let block = `
+    <div class="cbc-contributor-block">
+      <div class="cbc-contributor-header">
+        <div class="cbc-contributor-avatar">${av}</div>
+        <div>
+          <p class="cbc-contributor-name">📸 ${contributor}</p>
+          <p class="cbc-contributor-label">${imgs.length} photo${imgs.length!==1?'s':''}</p>
+        </div>
+      </div>
+      <div class="cbc-img-grid">`;
+  imgs.forEach((img, idx)=>{
+    const globalIdx = lightboxImages.findIndex(i=>i.src===img.src);
+    const wide = idx===0 ? ' wide' : '';
+    block += `<div class="cbc-img-item${wide}" onclick="openLightbox(${globalIdx})">
+      <img src="${img.src}" alt="${img.name}" loading="lazy"/>
+    </div>`;
+  });
+  block += `</div></div>`;
+  return block;
+}
+
+async function renderVideos(folders, rootVids){
+  const videoWrap = document.getElementById('cbcVideoWrap');
+  let videosHTML = '';
+  // root level videos
+  rootVids.forEach(v=>{
+    videosHTML += `<div class="cbc-video-item">
+      <video controls preload="metadata">
+        <source src="${RAW_BASE}/${encodeURIComponent(v.name)}" type="video/${v.name.split('.').pop().toLowerCase()}">
+      </video>
+      <div class="cbc-video-credit-bar">📹 Assis Lab · ${v.name}</div>
+    </div>`;
+  });
+  // subfolder videos
+  for(const folder of folders){
+    const subRes   = await fetch(folder.url);
+    const subItems = await subRes.json();
+    if(!Array.isArray(subItems)) continue;
+    const subVids = subItems.filter(i=>i.type==='file'&&isVid(i.name));
+    const base    = RAW_BASE + '/' + encodeURIComponent(folder.name);
+    subVids.forEach(v=>{
+      videosHTML += `<div class="cbc-video-item">
+        <video controls preload="metadata">
+          <source src="${base}/${encodeURIComponent(v.name)}" type="video/${v.name.split('.').pop().toLowerCase()}">
+        </video>
+        <div class="cbc-video-credit-bar">📹 ${folder.name} · ${v.name}</div>
+      </div>`;
+    });
+  }
+  if(videosHTML){
+    videoWrap.innerHTML = '<div class="cbc-videos">' + videosHTML + '</div>';
+  }
+}
+
+// ── LIGHTBOX ──
+function openLightbox(idx){
+  lightboxIndex = idx;
+  const lb = document.getElementById('lightbox');
+  lb.querySelector('img').src = lightboxImages[idx].src;
+  lb.querySelector('.lightbox-credit').textContent = '📸 ' + lightboxImages[idx].credit + ' · ' + lightboxImages[idx].name;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lightboxNav(dir){
+  lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+  const lb = document.getElementById('lightbox');
+  lb.querySelector('img').src = lightboxImages[lightboxIndex].src;
+  lb.querySelector('.lightbox-credit').textContent = '📸 ' + lightboxImages[lightboxIndex].credit + ' · ' + lightboxImages[lightboxIndex].name;
+}
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowRight') lightboxNav(1);
+  if(e.key==='ArrowLeft') lightboxNav(-1);
+});
+
+
 </script>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">‹</button>
+  <img src="" alt=""/>
+  <p class="lightbox-credit"></p>
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">›</button>
+</div>
 </body>
 </html>
