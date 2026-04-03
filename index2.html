@@ -913,7 +913,7 @@ const PUBS_FALLBACK = [
   {year:2012,title:"Vocal and territorial behavior in the Smith frog (Hypsiboas faber): relationships with plasma levels of corticosterone and testosterone",authors:"Assis VR, Navas CA, Mendonça MT, Gomes FR",journal:"Journal of Comparative Physiology B, 182(6): 823–834",areas:["behavior"],badge:null,url:"https://doi.org/10.1007/s00360-012-0698-7"}
 ];
 
-const AL={ecoimmunology:"Amphibian Ecoimmunology",lyme:"Lyme Disease",behavior:"Stress & Behavior",cytometry:"Flow Cytometry",cort:"Corticosterone Methods",conservation:"Conservation"};
+
 let curF='all';
 let PUBS = PUBS_FALLBACK;
 
@@ -977,9 +977,8 @@ function guessAreas(title) {
 }
 
 // Fetch ORCID data on page load
-fetchORCIDPublications();
+document.addEventListener("DOMContentLoaded", fetchORCIDPublications);
 
-const AL_ORIG = {...AL};
 
 const AL={ecoimmunology:"Amphibian Ecoimmunology",lyme:"Lyme Disease",behavior:"Stress & Behavior",cytometry:"Flow Cytometry",cort:"Corticosterone Methods",conservation:"Conservation"};
 let curF='all';
@@ -1182,7 +1181,7 @@ function updateOutreachStatus() {
   });
 }
 // Run on load and when language changes
-updateOutreachStatus();
+document.addEventListener("DOMContentLoaded", updateOutreachStatus);
 
 
 // ── HERO CAROUSEL ──
@@ -1257,7 +1256,7 @@ function resetCarouselTimer() {
 }
 
 // Init carousel on page load
-initCarousel();
+document.addEventListener("DOMContentLoaded", initCarousel);
 
 document.getElementById('nt').addEventListener('click',()=>document.getElementById('nl').classList.toggle('open'));
 
